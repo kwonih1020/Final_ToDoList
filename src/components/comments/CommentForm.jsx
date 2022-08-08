@@ -9,10 +9,12 @@ import { __postComments } from "../../redux/modules/commentListSlice";
 const CommentForm = () => {
   const dispatch = useDispatch();
   // const { targetId } = useParams();
+
   const [inputs, setInputs] = useState({
     user: "",
     desc: "",
   });
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInputs({
@@ -20,14 +22,23 @@ const CommentForm = () => {
       [name]: value,
     });
   };
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
+
+    if (inputs.user === "" || inputs.desc === "")
+      return alert("정보를 입력하시오");
+
     dispatch(
       __postComments({
         targetId: parseInt(1),
         ...inputs,
       })
     );
+    setInputs({
+      user: "",
+      desc: "",
+    });
   };
 
   return (
