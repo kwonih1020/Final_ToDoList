@@ -9,25 +9,25 @@
   "comments": [
     {
       "origin_id": 1,
-      "comment_id": 0,
+      "id": 0,
       "user": "username0",
       "desc": "description0"
     },
     {
       "origin_id": 1,
-      "comment_id": 1,
+      "id": 1,
       "user": "username1",
       "desc": "description1"
     },
     {
       "origin_id": 1,
-      "comment_id": 2,
+      "id": 2,
       "user": "username2",
       "desc": "description2"
     },
     {
       "origin_id": 1,
-      "comment_id": 3,
+      "id": 3,
       "user": "username3",
       "desc": "description3"
     }
