@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+// eslint-disable-next-line
+
+// import logo from "./logo.svg";
+import "./App.css";
+import CommentSection from "./components/comments/CommentSection";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CommentSection />
+      {/* 권익현 = 일시적으로 작업을 위해 CommentSection Component 연결함, 나중에 지워야함 */}
     </div>
   );
 }
