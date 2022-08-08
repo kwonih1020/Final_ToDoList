@@ -9,27 +9,15 @@
   "comments": [
     {
       "origin_id": 1,
-      "id": 0,
-      "user": "username0",
-      "desc": "description0"
+      "id": 425,
+      "user": "1223",
+      "desc": "description"
     },
     {
       "origin_id": 1,
-      "id": 1,
-      "user": "username1",
-      "desc": "description1"
-    },
-    {
-      "origin_id": 1,
-      "id": 2,
-      "user": "username2",
-      "desc": "description2"
-    },
-    {
-      "origin_id": 1,
-      "id": 3,
-      "user": "username3",
-      "desc": "description3"
+      "id": 2223,
+      "user": "234",
+      "desc": "descr212iption"
     }
   ]
 }

@@ -19,7 +19,6 @@ export const __getComments = createAsyncThunk(
       const commentList = await axios.get(
         `http://localhost:3001/comments?origin_id=${targetId}`
       );
-      console.log(commentList);
       return thunkAPI.fulfillWithValue(commentList.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.status);
