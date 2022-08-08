@@ -5,8 +5,8 @@ const initialState = {
   comment: {
     origin_id: 0,
     id: 0,
-    user: "username",
-    desc: "description",
+    user: "",
+    desc: "",
   },
   isLoading: false,
   err: null,
@@ -19,11 +19,25 @@ export const __patchComment = createAsyncThunk(
     try {
       const targetId = args.targetId;
       const newDesc = args.newDesc;
-      const getCommentRes = await axios.patch(
+      const patchCommentRes = await axios.patch(
         `http://localhost:3001/comments/${targetId}`,
         { desc: newDesc }
       );
-      return thunkAPI.fulfillWithValue(getCommentRes);
+      console.log(patchCommentRes);
+      return thunkAPI.fulfillWithValue(patchCommentRes.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const __getComment = createAsyncThunk(
+  "comment/__getComment",
+  async (args, thunkAPI) => {
+    try {
+      const getCommentRes = await axios.get(
+        `http://localhost:3001/comments/${args}`
+      );
+      return thunkAPI.fulfillWithValue(getCommentRes.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -37,7 +51,7 @@ export const __deleteComment = createAsyncThunk(
       const delCommentRes = await axios.delete(
         `http://localhost:3001/comments/${args}`
       );
-      return thunkAPI.fulfillWithValue(delCommentRes);
+      return thunkAPI.fulfillWithValue(delCommentRes.status);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -54,7 +68,7 @@ const commentSlice = createSlice({
     },
     [__patchComment.fulfilled]: (state = initialState, action) => {
       state.isLoading = false;
-      state.comment = { ...action.payload.data };
+      state.comment = action.payload;
     },
     [__patchComment.rejected]: (state = initialState, action) => {
       state.isLoading = false;
@@ -62,12 +76,24 @@ const commentSlice = createSlice({
     },
     [__deleteComment.pending]: (state = initialState, action) => {
       state.isLoading = true;
+      state.status = 0;
     },
     [__deleteComment.fulfilled]: (state = initialState, action) => {
       state.isLoading = false;
-      state.status = action.payload.status;
+      state.status = action.payload;
     },
     [__deleteComment.rejected]: (state = initialState, action) => {
+      state.isLoading = false;
+      state.err = action.payload.comments;
+    },
+    [__getComment.pending]: (state = initialState, action) => {
+      state.isLoading = true;
+    },
+    [__getComment.fulfilled]: (state = initialState, action) => {
+      state.isLoading = false;
+      state.comment = action.payload;
+    },
+    [__getComment.rejected]: (state = initialState, action) => {
       state.isLoading = false;
       state.err = action.payload.comments;
     },

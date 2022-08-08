@@ -10,7 +10,7 @@ import { __getComments } from "../../redux/modules/commentListSlice";
 
 const CommentList = () => {
   const comments = useSelector((state) => state.commentListSlice.comments);
-  const isDone = useSelector((state) => state.commentSlice.status);
+  const isDone = useSelector((state) => state.commentSlice.isLoading);
   // const { targetId } = useParams();
   const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ const CommentList = () => {
   );
 };
 const StWrap = styled.div`
-  height: 100%;
+  height: calc(100% - 60px);
   overflow-y: scroll;
 `;
 export default React.memo(CommentList);
