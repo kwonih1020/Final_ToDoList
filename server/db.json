@@ -5,5 +5,61 @@
       "title": "json-server",
       "content": "json-server를 배워봅시다."
     }
+  ],
+  "comments": [
+    {
+      "origin_id": 1,
+      "id": 0,
+      "user": "username",
+      "desc": "description"
+    },
+    {
+      "origin_id": 1,
+      "id": 2,
+      "user": "username",
+      "desc": "description"
+    },
+    {
+      "origin_id": 1,
+      "id": 3,
+      "user": "username",
+      "desc": "description"
+    },
+    {
+      "origin_id": 2,
+      "id": 4,
+      "user": "username",
+      "desc": "description"
+    },
+    {
+      "origin_id": 2,
+      "id": 10,
+      "user": "username",
+      "desc": "description"
+    },
+    {
+      "origin_id": 2,
+      "id": 5,
+      "user": "username",
+      "desc": "description"
+    },
+    {
+      "origin_id": 2,
+      "id": 6,
+      "user": "username",
+      "desc": "description"
+    },
+    {
+      "origin_id": 2,
+      "id": 7,
+      "user": "username",
+      "desc": "description"
+    },
+    {
+      "origin_id": 2,
+      "id": 8,
+      "user": "username",
+      "desc": "description"
+    }
   ]
 }
