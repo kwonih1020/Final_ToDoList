@@ -25,7 +25,8 @@
 ## 환경설정
 ```
 - npm install --global yarn (yarn을 설치 안했을때)
-- yarn add styled-components yarn add react-redux @reduxjs/toolkit
+- yarn add styled-components
+- yarn add react-redux @reduxjs/toolkit
 - yarn add json-server
 - yarn add cross-env
 - yarn add react-router-dom@6
