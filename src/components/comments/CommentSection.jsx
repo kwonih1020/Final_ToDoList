@@ -30,14 +30,14 @@ export default CommentSection;
 const CommentUpContainer = styled.div`
   border: 1px solid red;
   width: 100%;
-  min-height: 65%;
-  height: 65%;
+  /* min-height: 65%; */
+  height: auto;
   background-color: #eee;
   position: absolute;
   padding: 15px 0;
   bottom: 0;
   border-radius: 24px 24px 0 0;
-  transform: ${({ commentUp }) => `translateY(${commentUp ? 0 : 600}px)`};
+  transform: ${({ commentUp }) => `translateY(${commentUp ? 0 : 300}px)`};
   transition: transform 600ms ease-in-out;
 `;
 

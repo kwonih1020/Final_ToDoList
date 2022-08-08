@@ -1,11 +1,11 @@
 import React from "react";
 
-const CommentBox = () => {
+const CommentBox = ({ id, user, desc }) => {
   return (
     <>
       <div>
-        <h3>todos.user</h3>
-        <p>todos.comment</p>
+        <h3>{user}</h3>
+        <p>{desc}</p>
       </div>
       <div>
         {/* Button Element 사용하기 */}
