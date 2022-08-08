@@ -21,7 +21,8 @@
     "extends": [
       "react-app",
       "react-app/jest",
-      "ddrrrdd"
+      "ddrrrdd",
+      "뭐가문제야 세이 섬팅"
     ]
   },
   "browserslist": {
