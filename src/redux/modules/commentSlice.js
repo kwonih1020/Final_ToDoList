@@ -8,8 +8,9 @@ const initialState = {
     user: "username",
     desc: "description",
   },
-  isloading: false,
+  isLoading: false,
   err: null,
+  status: 0,
 };
 
 export const __patchComment = createAsyncThunk(
@@ -33,9 +34,8 @@ export const __deleteComment = createAsyncThunk(
   "comment/__deleteComment",
   async (args, thunkAPI) => {
     try {
-      const targetId = args.targetId;
       const delCommentRes = await axios.delete(
-        `http://localhost:3001/comments/${targetId}`
+        `http://localhost:3001/comments/${args}`
       );
       return thunkAPI.fulfillWithValue(delCommentRes);
     } catch (error) {
@@ -50,23 +50,25 @@ const commentSlice = createSlice({
   reducers: {},
   extraReducers: {
     [__patchComment.pending]: (state = initialState, action) => {
-      state.isloading = true;
+      state.isLoading = true;
     },
     [__patchComment.fulfilled]: (state = initialState, action) => {
-      state.isloading = false;
+      state.isLoading = false;
+      state.comment = { ...action.payload.data };
     },
     [__patchComment.rejected]: (state = initialState, action) => {
-      state.isloading = false;
+      state.isLoading = false;
       state.err = action.payload.comments;
     },
     [__deleteComment.pending]: (state = initialState, action) => {
-      state.isloading = true;
+      state.isLoading = true;
     },
     [__deleteComment.fulfilled]: (state = initialState, action) => {
-      state.isloading = false;
+      state.isLoading = false;
+      state.status = action.payload.status;
     },
     [__deleteComment.rejected]: (state = initialState, action) => {
-      state.isloading = false;
+      state.isLoading = false;
       state.err = action.payload.comments;
     },
   },

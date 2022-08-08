@@ -9,57 +9,21 @@
   "comments": [
     {
       "origin_id": 1,
-      "id": 0,
-      "user": "username",
-      "desc": "description"
-    },
-    {
-      "origin_id": 1,
-      "id": 2,
-      "user": "username",
-      "desc": "description"
-    },
-    {
-      "origin_id": 1,
       "id": 3,
-      "user": "username",
+      "user": "4444",
       "desc": "description"
     },
     {
-      "origin_id": 2,
-      "id": 4,
-      "user": "username",
+      "origin_id": 1,
+      "id": 425,
+      "user": "1223",
       "desc": "description"
     },
     {
-      "origin_id": 2,
-      "id": 10,
-      "user": "username",
-      "desc": "description"
-    },
-    {
-      "origin_id": 2,
-      "id": 5,
-      "user": "username",
-      "desc": "description"
-    },
-    {
-      "origin_id": 2,
-      "id": 6,
-      "user": "username",
-      "desc": "description"
-    },
-    {
-      "origin_id": 2,
-      "id": 7,
-      "user": "username",
-      "desc": "description"
-    },
-    {
-      "origin_id": 2,
-      "id": 8,
-      "user": "username",
-      "desc": "description"
+      "origin_id": 1,
+      "id": 2223,
+      "user": "234",
+      "desc": "descr212iption"
     }
   ]
 }
