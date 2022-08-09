@@ -15,7 +15,7 @@ const HomePage = (props) => {
           <h3>할 일 기록하기</h3>
           <div>-&gt;</div>
         </HomeNavigator>
-        <HomeNavigator onClick={() => navigate("/:id")}>
+        <HomeNavigator onClick={() => navigate("/todos")}>
           <h3>Todo List</h3>
           <div>-&gt;</div>
         </HomeNavigator>

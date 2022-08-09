@@ -1,9 +1,34 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "json-server",
-      "content": "json-server를 배워봅시다."
+      "id": "1",
+      "user": "채운",
+      "title": "나는 코딩이 좋아",
+      "body": "dddd"
+    },
+    {
+      "id": "2",
+      "user": "태훈",
+      "title": "나는 코딩이 싫어",
+      "body": "ffff"
+    },
+    {
+      "id": "3",
+      "user": "익현",
+      "title": "나는 코딩을 사랑해 라고 할뻔",
+      "body": "ㅗㅗㅗㅗㅗ"
+    },
+    {
+      "id": "4",
+      "user": "도욱",
+      "title": "개가튼 리웨엑트",
+      "body": "ㅜㅜㅜㅜㅜㅜ"
+    },
+    {
+      "id": "5",
+      "user": "2조",
+      "title": "이게 왜 되지?.. 나도 몰라..",
+      "body": "ㅜㅜㅜㅜㅜㅜ"
     }
   ],
   "comments": [
