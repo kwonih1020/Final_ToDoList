@@ -12,6 +12,7 @@ const reducer = combineReducers({
 
 const store = configureStore({
   reducer,
+  // 배포할때 logger는 지워야함
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
