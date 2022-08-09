@@ -47,6 +47,32 @@ export const __postComments = createAsyncThunk(
   }
 );
 
+export const __deleteCommentsById = createAsyncThunk(
+  "comments/__deleteCommentById",
+  async (payload, thunkAPI) => {
+    try {
+      const getByIdRes = await axios.get(
+        `http://localhost:3001/comments?origin_id=${payload}`
+      );
+      console.log(getByIdRes.data);
+      for (let i = 0; i < getByIdRes.data.length; i++) {
+        if (i === getByIdRes.data.length - 1) {
+          const deleteAllCommentRes = await axios.delete(
+            `http://localhost:3001/comments/${getByIdRes.data[i].id}`
+          );
+          return thunkAPI.fulfillWithValue(deleteAllCommentRes);
+        } else {
+          axios.delete(
+            `http://localhost:3001/comments/${getByIdRes.data[i].id}`
+          );
+        }
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 const commentListSlice = createSlice({
   name: "commentListSlice",
   initialState,
@@ -77,6 +103,18 @@ const commentListSlice = createSlice({
     [__postComments.rejected]: (state, action) => {
       state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
       state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
+    },
+    [__deleteCommentsById.pending]: (state, action) => {
+      state.isLoading = true;
+    },
+    [__deleteCommentsById.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.err = null;
+    },
+    [__deleteCommentsById.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.comments = [];
+      state.err = action.payload;
     },
   },
 });

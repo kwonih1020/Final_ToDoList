@@ -23,7 +23,7 @@ export const __patchComment = createAsyncThunk(
         `http://localhost:3001/comments/${targetId}`,
         { desc: newDesc }
       );
-      console.log(patchCommentRes);
+
       return thunkAPI.fulfillWithValue(patchCommentRes.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

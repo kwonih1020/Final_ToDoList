@@ -29,13 +29,16 @@ const CommentBox = ({ id, user, desc }) => {
 
   const onPatch = useCallback(() => {
     if (isEdit) {
-      console.log(newDesc);
-      dispatch(__patchComment({ targetId, newDesc }));
+      if (newDesc !== "") {
+        dispatch(__patchComment({ targetId, newDesc }));
+      }
+
       setIsEdit(false);
     } else {
       setIsEdit(true);
     }
-  }, [newDesc, isEdit]);
+  }, [isEdit, newDesc]);
+
   return (
     <>
       <div>
