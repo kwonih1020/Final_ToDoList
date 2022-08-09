@@ -18,7 +18,6 @@ export const __getComments = createAsyncThunk(
     try {
       const targetId = payload;
       const commentList = await axios.get(
-        // 추후 env를 통해 json-server (heroku url) 가려줘야함
         commentServer + `?origin_id=${targetId}`
       );
       // console.log(commentList);
