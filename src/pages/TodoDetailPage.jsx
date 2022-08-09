@@ -1,7 +1,7 @@
 import React from "react";
-
+import CommentSection from "../components/comments/CommentSection";
 const TodoDetailPage = (props) => {
-  return <div>TodoDetailPage입니다.</div>;
+  return <CommentSection />;
 };
 
 export default TodoDetailPage;

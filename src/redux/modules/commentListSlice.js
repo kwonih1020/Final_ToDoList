@@ -17,7 +17,7 @@ export const __getComments = createAsyncThunk(
       const targetId = payload;
       const commentList = await axios.get(
         // 추후 env를 통해 json-server (heroku url) 가려줘야함
-        `http://localhost:4000/comments?origin_id=${targetId}`
+        `http://localhost:3001/comments?origin_id=${targetId}`
       );
       // console.log(commentList);
       return thunkAPI.fulfillWithValue(commentList.data);
@@ -31,9 +31,9 @@ export const __postComments = createAsyncThunk(
   "comments/__postComments",
   async (payload, thunkAPI) => {
     try {
-      const commentList = await axios.get("http://localhost:4000/comments");
+      const commentList = await axios.get("http://localhost:3001/comments");
       const { user, desc, targetId } = { ...payload };
-      const commentPost = await axios.post("http://localhost:4000/comments", {
+      const commentPost = await axios.post("http://localhost:3001/comments", {
         origin_id: targetId,
         id: commentList.data.at(-1).id + 1,
         user,
