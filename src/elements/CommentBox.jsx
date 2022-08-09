@@ -5,30 +5,37 @@ import {
   __getComment,
   __patchComment,
 } from "../redux/modules/commentSlice";
-
+import { __getComments } from "../redux/modules/commentListSlice";
 const CommentBox = ({ id, user, desc }) => {
   const targetId = id;
   const [isEdit, setIsEdit] = useState(false);
   const [newDesc, setnewDesc] = useState("");
   const dispatch = useDispatch();
-  const onChange = (e) => {
-    setnewDesc(e.target.value);
-  };
+
+  const onChange = useCallback(
+    (e) => {
+      setnewDesc(e.target.value);
+    },
+    [newDesc]
+  );
   const onDelete = useCallback(() => {
-    if (isEdit) {
-      setIsEdit(!isEdit);
-    } else {
+    if (!isEdit) {
       dispatch(__deleteComment(targetId));
+      setIsEdit(false);
+    } else if (isEdit) {
+      setIsEdit(!isEdit);
     }
-  }, [dispatch]);
+  }, [isEdit]);
 
   const onPatch = useCallback(() => {
     if (isEdit) {
+      console.log(newDesc);
       dispatch(__patchComment({ targetId, newDesc }));
+      setIsEdit(false);
+    } else {
+      setIsEdit(true);
     }
-    setIsEdit(!isEdit);
-  }, [targetId]);
-
+  }, [newDesc, isEdit]);
   return (
     <>
       <div>
