@@ -10,19 +10,33 @@
 </div>
 <br>
 
-채운이 테스트용
-
 - 항해99 8기 A반 2조 팀 프로젝트
   - 권익현, 강태훈, 심채운, 강도욱
-- (앞으로 사용될 주 기능 이름들)로 ToDoList앱을 만들었습니다.
+- React, Redux/Toolkit 과 middleware Thunk를 활용하여 ToDoList앱을 만들었습니다.
 - 2022.08.05 ~ 2022.08.11
+
+## 주요기능
+
+- 본문 CRUD 구현
+  - 리스트 조회하기
+  - 본문 조회하기
+  - 본문 추가하기
+  - 본문 삭제하기
+  - 본문 수정하기
+- 댓글 CRUD 구현
+  - 댓글 조회하기
+  - 댓글 추가하기
+  - 댓글 삭제하기
+  - 댓글 수정하기
 
 ## 라이브러리 🛠
 
 - React.js
-- Redux
+- Redux/Toolkit
 - Styled Components
 - Router
+- axios
+- json-server
 
 ## 환경설정
 
@@ -30,7 +44,7 @@
 - npm install --global yarn (yarn을 설치 안했을때)
 - yarn add styled-components
 - yarn add react-redux @reduxjs/toolkit
-- yarn add json-server
+- yarn add global json-server
 - yarn add cross-env
 - yarn add react-router-dom@6
 - yarn add axios
