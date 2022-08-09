@@ -32,7 +32,7 @@ const CommentUpContainer = styled.div`
   /* min-height: 65%; */
   background-color: #eee;
   position: absolute;
-  padding: 15px 0;
+  padding: 15px;
   bottom: 0;
   overflow-y: hidden;
   border-radius: 24px 24px 0 0;
@@ -52,7 +52,7 @@ const CommentUpContainer = styled.div`
   }}
   transition: height 0.6s ease-in-out;
   div:nth-of-type(1) {
-    margin-bottom: 15px;
+    padding: 10px 0 15px 0;
   }
 `;
 
