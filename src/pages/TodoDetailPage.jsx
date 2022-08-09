@@ -1,6 +1,7 @@
 import React from "react";
 import GlobalLayout from "../global/GlobalLayout";
 import styled from "styled-components";
+import CommentSection from "../components/comments/CommentSection";
 
 const TodoDetailPage = (props) => {
   return (
@@ -14,6 +15,7 @@ const TodoDetailPage = (props) => {
         <div className="body">body 입니당</div>
         <button>수정</button>
       </StBodyBox>
+      <CommentSection />
     </GlobalLayout>
   );
 };
