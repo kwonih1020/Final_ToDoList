@@ -11,6 +11,7 @@ import { __getComments } from "../../redux/modules/commentListSlice";
 const CommentList = () => {
   const comments = useSelector((state) => state.commentListSlice.comments);
 
+  // 추후 본문쪽 완료되면 useParams이용해서 다시 재연결 필요 - 권익현
   // const { targetId } = useParams();
   const dispatch = useDispatch();
 
@@ -21,7 +22,7 @@ const CommentList = () => {
 
   return (
     <>
-      {/* 밑에 map함수로 CommentBox Component 안에 있는 내용들 뿌려주기 */}
+      {/* 권익현 - 밑에 map함수로 CommentBox Component 안에 있는 내용들 뿌려주기 */}
       {comments.map((comment) => {
         return (
           <CommentBox

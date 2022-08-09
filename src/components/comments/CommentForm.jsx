@@ -8,6 +8,7 @@ import { __postComments } from "../../redux/modules/commentListSlice";
 
 const CommentForm = () => {
   const dispatch = useDispatch();
+  // **마찬가지로 추후 본문쪽에서 targetId 파라미터 가져와서 재연결 필요** = 권익현
   // const { targetId } = useParams();
 
   const [inputs, setInputs] = useState({
