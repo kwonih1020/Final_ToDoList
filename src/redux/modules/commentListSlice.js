@@ -6,14 +6,6 @@ import axios from "axios";
 // ---- 권익현 ----
 const initialState = {
   comments: [],
-  comment: [
-    {
-      origin_id: 0,
-      id: 0,
-      user: "",
-      desc: "",
-    },
-  ],
   isLoading: false,
   err: null,
 };
