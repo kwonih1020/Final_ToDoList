@@ -27,7 +27,7 @@ const CommentBox = ({ id, user, desc }) => {
       dispatch(__patchComment({ targetId, newDesc }));
     }
     setIsEdit(!isEdit);
-  });
+  }, [targetId]);
 
   return (
     <>
