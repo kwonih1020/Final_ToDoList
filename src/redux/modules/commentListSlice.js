@@ -3,6 +3,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const commentServer = process.env.REACT_APP_COMMENTS;
+
 // ---- 권익현 ----
 const initialState = {
   comments: [],
@@ -17,7 +19,7 @@ export const __getInitialComments = createAsyncThunk(
       const targetId = payload;
       const commentList = await axios.get(
         // 추후 env를 통해 json-server (heroku url) 가려줘야함
-        `http://localhost:3001/comments?origin_id=${targetId}&_end=8`
+        commentServer + `?origin_id=${targetId}&_end=8`
       );
       return thunkAPI.fulfillWithValue(commentList.data);
     } catch (error) {
@@ -35,7 +37,7 @@ export const __getComments = createAsyncThunk(
       const targetId = payload.targetId;
       const commentList = await axios.get(
         // 추후 env를 통해 json-server (heroku url) 가려줘야함
-        `http://localhost:3001/comments?origin_id=${targetId}&_start=${getStartIdx}&_limit=6`
+        commentServer + `?origin_id=${targetId}&_start=${getStartIdx}&_limit=6`
       );
 
       return thunkAPI.fulfillWithValue(legacyComments.concat(commentList.data));
@@ -49,9 +51,9 @@ export const __postComments = createAsyncThunk(
   "comments/__postComments",
   async (payload, thunkAPI) => {
     try {
-      const commentList = await axios.get("http://localhost:3001/comments");
+      const commentList = await axios.get(commentServer);
       const { user, desc, targetId } = { ...payload };
-      const commentPost = await axios.post("http://localhost:3001/comments", {
+      const commentPost = await axios.post(commentServer, {
         origin_id: targetId,
         id: commentList.data.at(-1).id + 1,
         user,
@@ -69,19 +71,17 @@ export const __deleteCommentsById = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const getByIdRes = await axios.get(
-        `http://localhost:3001/comments?origin_id=${payload}`
+        commentServer + `?origin_id=${payload}`
       );
       console.log(getByIdRes.data);
       for (let i = 0; i < getByIdRes.data.length; i++) {
         if (i === getByIdRes.data.length - 1) {
           const deleteAllCommentRes = await axios.delete(
-            `http://localhost:3001/comments/${getByIdRes.data[i].id}`
+            commentServer + `/${getByIdRes.data[i].id}`
           );
           return thunkAPI.fulfillWithValue(deleteAllCommentRes);
         } else {
-          axios.delete(
-            `http://localhost:3001/comments/${getByIdRes.data[i].id}`
-          );
+          axios.delete(commentServer + `/${getByIdRes.data[i].id}`);
         }
       }
     } catch (error) {

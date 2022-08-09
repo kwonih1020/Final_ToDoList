@@ -32,11 +32,12 @@ const CommentUpContainer = styled.div`
   /* min-height: 65%; */
   background-color: #eee;
   position: absolute;
-  padding: 15px 0;
+  padding: 15px 0px 15px 0;
   bottom: 0;
   overflow-y: hidden;
   border-radius: 24px 24px 0 0;
   ${({ commentUp }) => {
+    // eslint-disable-next-line default-case
     switch (commentUp) {
       case true: {
         return css`
@@ -52,7 +53,7 @@ const CommentUpContainer = styled.div`
   }}
   transition: height 0.6s ease-in-out;
   div:nth-of-type(1) {
-    margin-bottom: 15px;
+    padding: 10px 10px 15px 10px;
   }
 `;
 

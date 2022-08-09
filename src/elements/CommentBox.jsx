@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import {
@@ -5,7 +7,6 @@ import {
   __getComment,
   __patchComment,
 } from "../redux/modules/commentSlice";
-import { __getComments } from "../redux/modules/commentListSlice";
 const CommentBox = ({ id, user, desc }) => {
   const targetId = id;
   const [isEdit, setIsEdit] = useState(false);
