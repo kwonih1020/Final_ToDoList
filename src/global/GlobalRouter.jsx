@@ -1,8 +1,9 @@
 import React from "react";
 import HomePage from "../pages/HomePage";
-import TodoDetailPage from "../pages/TodoAddFormPage";
-import TodoAddFormPage from "../pages/TodoDetailPage";
+import TodoAddFormPage from "../pages/TodoAddFormPage";
+import TodoDetailPage from "../pages/TodoDetailPage";
 import { Routes, Route } from "react-router-dom";
+import TodoListPage from "../pages/TodoListPage";
 
 function GlobalRouter() {
   return (
@@ -10,7 +11,8 @@ function GlobalRouter() {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/add" element={<TodoAddFormPage />} />
-        <Route path="/:id" element={<TodoDetailPage />} />
+        <Route path="/todos" element={<TodoListPage />} />
+        <Route path="/todos/:id" element={<TodoDetailPage />} />
       </Routes>
     </>
   );

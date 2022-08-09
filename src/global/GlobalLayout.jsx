@@ -16,4 +16,5 @@ const StGlobalLayout = styled.div`
   height: calc(100vh - 45px);
   padding: 24px;
   box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
 `;
