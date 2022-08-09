@@ -3,6 +3,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const commentServer = process.env.REACT_APP_COMMENTS;
+
 // ---- 권익현 ----
 const initialState = {
   comments: [],
@@ -17,7 +19,7 @@ export const __getComments = createAsyncThunk(
       const targetId = payload;
       const commentList = await axios.get(
         // 추후 env를 통해 json-server (heroku url) 가려줘야함
-        `http://localhost:3001/comments?origin_id=${targetId}`
+        commentServer + `?origin_id=${targetId}`
       );
       // console.log(commentList);
       return thunkAPI.fulfillWithValue(commentList.data);
@@ -31,9 +33,9 @@ export const __postComments = createAsyncThunk(
   "comments/__postComments",
   async (payload, thunkAPI) => {
     try {
-      const commentList = await axios.get("http://localhost:3001/comments");
+      const commentList = await axios.get(commentServer);
       const { user, desc, targetId } = { ...payload };
-      const commentPost = await axios.post("http://localhost:3001/comments", {
+      const commentPost = await axios.post(commentServer, {
         origin_id: targetId,
         id: commentList.data.at(-1).id + 1,
         user,

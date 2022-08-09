@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const commentServer = process.env.REACT_APP_COMMENTS;
+
 const initialState = {
   comment: {
     origin_id: 0,
@@ -20,7 +22,7 @@ export const __patchComment = createAsyncThunk(
       const targetId = args.targetId;
       const newDesc = args.newDesc;
       const patchCommentRes = await axios.patch(
-        `http://localhost:3001/comments/${targetId}`,
+        commentServer + `/${targetId}`,
         { desc: newDesc }
       );
       console.log(patchCommentRes);
@@ -34,9 +36,7 @@ export const __getComment = createAsyncThunk(
   "comment/__getComment",
   async (args, thunkAPI) => {
     try {
-      const getCommentRes = await axios.get(
-        `http://localhost:3001/comments/${args}`
-      );
+      const getCommentRes = await axios.get(commentServer + `/${args}`);
       return thunkAPI.fulfillWithValue(getCommentRes.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -48,9 +48,7 @@ export const __deleteComment = createAsyncThunk(
   "comment/__deleteComment",
   async (args, thunkAPI) => {
     try {
-      const delCommentRes = await axios.delete(
-        `http://localhost:3001/comments/${args}`
-      );
+      const delCommentRes = await axios.delete(commentServer + `/${args}`);
       return thunkAPI.fulfillWithValue(delCommentRes.status);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
