@@ -4,6 +4,12 @@
       "id": 1,
       "title": "json-server",
       "content": "json-server를 배워봅시다."
+    },
+    {
+      "id": 2,
+      "user": "강도욱",
+      "title": "강도욱",
+      "body": "강도욱"
     }
   ],
   "comments": [

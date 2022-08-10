@@ -1,7 +1,7 @@
 import React from "react";
 import HomePage from "../pages/HomePage";
-import TodoDetailPage from "../pages/TodoAddFormPage";
-import TodoAddFormPage from "../pages/TodoDetailPage";
+import TodoDetailPage from "../pages/TodoDetailPage";
+import TodoAddFormPage from "../pages/TodoAddFormPage";
 import { Routes, Route } from "react-router-dom";
 
 function GlobalRouter() {

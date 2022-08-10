@@ -1,16 +1,11 @@
 // eslint-disable-next-line
-
-import logger from "redux-logger";
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import commentListSlice from "../modules/commentListSlice";
-
-const reducer = combineReducers({
-  commentListSlice,
-});
+import { configureStore } from "@reduxjs/toolkit";
+import todoSlice from "../modules/todoSlice";
 
 const store = configureStore({
-  reducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  reducer: {
+    todoSlice,
+  },
 });
 
 export default store;
