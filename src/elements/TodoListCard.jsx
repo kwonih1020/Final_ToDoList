@@ -28,7 +28,7 @@ const TodoListCard = ({ todo }) => {
           <div className="title">{todo.title}</div>
           <div className="user">작성자 : {todo.user}</div>
         </div>
-        <Button onClick={onClick} size="medium">
+        <Button onClick={onClick} size="medium" className="button">
           삭제
         </Button>
       </div>
@@ -47,6 +47,10 @@ const StTodoListCard = styled.div`
   margin-bottom: 10px;
   border-radius: 8px;
   cursor: pointer;
+  &:hover {
+    box-shadow: rgb(0 0 0 / 10%) 4px 6px 5px;
+    /* background-color: pink; */
+  }
   .flexBox {
     /* background-color: royalblue; */
     display: flex;
