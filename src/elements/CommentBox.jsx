@@ -75,7 +75,7 @@ const StComment = styled.div`
   flex-direction: row;
   border-bottom: 1px solid rgb(238, 238, 238);
   height: 75px;
-  padding: 0px 12px;
+  padding: 0px 29px;
 `;
 
 const StControlGroup = styled.div`
