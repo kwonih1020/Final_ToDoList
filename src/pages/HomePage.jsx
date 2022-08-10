@@ -17,7 +17,7 @@ const HomePage = (props) => {
             <BsFillArrowRightCircleFill />
           </div>
         </HomeNavigator>
-        <HomeNavigator onClick={() => navigate("/todos")}>
+        <HomeNavigator onClick={() => navigate("/works")}>
           <h3>Todo List</h3>
           <div>
             <BsFillArrowRightCircleFill />
