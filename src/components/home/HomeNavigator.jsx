@@ -18,8 +18,9 @@ const StHomeNavigator = styled.div`
   border: 1px solid rgb(238, 238, 238);
   margin-top: 30px;
   border-radius: 8px;
+  cursor: pointer;
 
-  background-color: rgba(116, 30, 30, 0.2);
+  background-color: rgb(236 142 142 / 20%);
   h3 {
     font-size: 24px;
     font-weight: 400;
