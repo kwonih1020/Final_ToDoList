@@ -4,13 +4,14 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Button from "../elements/Button";
+import { AiFillHome } from "react-icons/ai";
 
 const Header = (props) => {
   const navigate = useNavigate();
   return (
     <Wrap>
       <Button size="small" onClick={() => navigate("/")}>
-        홈
+        <AiFillHome size="24" color="black" />
       </Button>
       <p>모두의 투두리스트</p>
     </Wrap>

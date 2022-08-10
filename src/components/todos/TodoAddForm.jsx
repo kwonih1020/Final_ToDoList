@@ -27,8 +27,7 @@ function TodoAddForm() {
         dispatch(__postTodo(inputs));
         navigate("/");
         setInputs({ user: "", title: "", body: "" });
-      }}
-    >
+      }}>
       <label htmlFor="user">작성자</label>
       <input
         name="user"
@@ -57,9 +56,7 @@ function TodoAddForm() {
         onChange={onChange}
         value={inputs.body}
       />
-      <button>
-        추가하기
-      </button>
+      <button>추가하기</button>
     </StForm>
   );
 }
