@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import CommentBox from "../../elements/CommentBox";
 import {
   __getComments,
@@ -78,8 +78,10 @@ const CommentList = () => {
     </StWrap>
   );
 };
+
+export default React.memo(CommentList);
+
 const StWrap = styled.div`
   height: calc(100% - 60px);
   overflow-y: scroll;
 `;
-export default React.memo(CommentList);

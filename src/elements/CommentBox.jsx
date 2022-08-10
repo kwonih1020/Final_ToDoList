@@ -1,13 +1,12 @@
 // eslint-disable-next-line
 
-import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import React, { useCallback, useState } from "react";
+import { useDispatch } from "react-redux/es/exports";
 import styled from "styled-components";
-import {
-  __deleteComment,
-  __getComment,
-  __patchComment,
-} from "../redux/modules/commentSlice";
+import { __deleteComment, __patchComment } from "../redux/modules/commentSlice";
+import Button from "./Button";
+import Input from "./Input";
+
 const CommentBox = ({ id, user, desc, toggleActive, activation }) => {
   const targetId = id;
   const [isEdit, setIsEdit] = useState(false);
@@ -35,7 +34,6 @@ const CommentBox = ({ id, user, desc, toggleActive, activation }) => {
       if (newDesc !== "") {
         dispatch(__patchComment({ targetId, newDesc }));
       }
-
       setIsEdit(false);
     } else {
       setIsEdit(true);
@@ -44,17 +42,27 @@ const CommentBox = ({ id, user, desc, toggleActive, activation }) => {
   }, [isEdit, newDesc]);
 
   return (
-    <>
-      <div>
-        <h3>{user}</h3>
-        {isEdit ? <input type="text" onChange={onChange} /> : <p>{desc}</p>}
-      </div>
-      <div>
+    <StComment>
+      <StInputWrapper>
+        <div className="inputContainer">
+          {user}
+          {isEdit ? (
+            <Input className="isEditInput" type="text" onChange={onChange} />
+          ) : (
+            <p>{desc}</p>
+          )}
+        </div>
+      </StInputWrapper>
+      <StControlGroup>
         {/* Button Element 사용하기 */}
         {activation ? (
           <>
-            <button onClick={onPatch}>수정</button>
-            <button onClick={onDelete}>{isEdit ? "취소" : "삭제"}</button>
+            <Button size="medium" onClick={onPatch}>
+              수정
+            </Button>
+            <Button size="medium" onClick={onDelete}>
+              {isEdit ? "취소" : "삭제"}
+            </Button>
           </>
         ) : (
           <>
@@ -62,8 +70,8 @@ const CommentBox = ({ id, user, desc, toggleActive, activation }) => {
             <StTestBtn>{isEdit ? "취소" : "삭제"}</StTestBtn>
           </>
         )}
-      </div>
-    </>
+      </StControlGroup>
+    </StComment>
   );
 };
 
@@ -72,3 +80,40 @@ const StTestBtn = styled.button`
 `;
 
 export default React.memo(CommentBox);
+
+const StComment = styled.div`
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  height: 75px;
+  padding: 0px 29px;
+`;
+
+const StControlGroup = styled.div`
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-shrink: 0;
+  gap: 3px;
+`;
+
+const StInputWrapper = styled.div`
+  width: 70%;
+  height: auto;
+  display: flex;
+  .inputContainer {
+    display: block;
+    width: 100%;
+    margin-top: 2px;
+  }
+  .isEditInput {
+    margin-top: 5px;
+  }
+`;

@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux/es/exports";
 // import { useParams } from "react-router-dom";
 import { __postComments } from "../../redux/modules/commentListSlice";
+import Button from "../../elements/Button";
+import Input from "../../elements/Input";
 
 const CommentForm = () => {
   const dispatch = useDispatch();
@@ -26,10 +28,6 @@ const CommentForm = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-
-    if (inputs.user === "" || inputs.desc === "")
-      return alert("정보를 입력하시오");
-
     dispatch(
       __postComments({
         targetId: parseInt(1),
@@ -45,25 +43,29 @@ const CommentForm = () => {
   return (
     <>
       <StForm onSubmit={onSubmitHandler}>
-        <input
-          type="text"
-          placeholder="작성자 (5자 이내)"
-          max="5"
-          name="user"
-          value={inputs.user}
-          onChange={onChangeHandler}
-          maxLength={5}
-        />
-        <input
-          type="text"
-          placeholder="댓글를 추가하세요 (100글자 이내)"
-          max="100"
-          name="desc"
-          value={inputs.desc}
-          onChange={onChangeHandler}
-          maxLength={100}
-        />
-        <button>추가하기</button>
+        <StNameInput>
+          <Input
+            type="text"
+            placeholder="작성자 (5자 이내)"
+            max="5"
+            name="user"
+            value={inputs.user}
+            onChange={onChangeHandler}
+            maxLength={5}
+          />
+        </StNameInput>
+        <StCommentInput>
+          <Input
+            type="text"
+            placeholder="댓글를 추가하세요 (100글자 이내)"
+            max="100"
+            name="desc"
+            value={inputs.desc}
+            onChange={onChangeHandler}
+            maxLength={100}
+          />
+        </StCommentInput>
+        <Button size="medium">추가하기</Button>
       </StForm>
     </>
   );
@@ -72,6 +74,20 @@ const CommentForm = () => {
 export default CommentForm;
 
 const StForm = styled.form`
-  gap: 12px;
-  padding: 0 10px 0 10px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+`;
+
+const StNameInput = styled.div`
+  width: 25%;
+`;
+
+const StCommentInput = styled.div`
+  width: 67%;
 `;

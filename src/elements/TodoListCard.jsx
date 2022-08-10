@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 // import { useSelector } from "react-redux";
 // import { useEffect, useState } from "react";
@@ -31,7 +32,7 @@ const TodoListCard = ({ todo }) => {
           <div className="title">{todo.title}</div>
           <div className="user">작성자 : {todo.user}</div>
         </div>
-        <button>삭제</button>
+        <Button size="medium">삭제</Button>
       </div>
     </StTodoListCard>
   );
@@ -47,6 +48,7 @@ const StTodoListCard = styled.div`
   box-sizing: border-box;
   margin-bottom: 10px;
   border-radius: 8px;
+  cursor: pointer;
   .flexBox {
     /* background-color: royalblue; */
     display: flex;
@@ -67,10 +69,6 @@ const StTodoListCard = styled.div`
         font-size: 12px;
         margin: 10px 0 0 0;
       }
-    }
-    button {
-      width: 80px;
-      height: 30px;
     }
   }
 `;

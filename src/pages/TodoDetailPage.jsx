@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+
 import React from "react";
 import GlobalLayout from "../global/GlobalLayout";
 import styled from "styled-components";
@@ -5,18 +7,20 @@ import CommentSection from "../components/comments/CommentSection";
 
 const TodoDetailPage = (props) => {
   return (
-    <GlobalLayout>
-      <StDtailHeader>
-        <div className="id">id : (1)</div>
-        <div className="goBack">이전으로</div>
-      </StDtailHeader>
-      <StTitle>title 입니당</StTitle>
-      <StBodyBox>
-        <div className="body">body 입니당</div>
-        <button>수정</button>
-      </StBodyBox>
+    <>
+      <GlobalLayout>
+        <StDtailHeader>
+          <div className="id">id : (1)</div>
+          <div className="goBack">이전으로</div>
+        </StDtailHeader>
+        <StTitle>title 입니당</StTitle>
+        <StBodyBox>
+          <div className="body">body 입니당</div>
+          <button>수정</button>
+        </StBodyBox>
+      </GlobalLayout>
       <CommentSection />
-    </GlobalLayout>
+    </>
   );
 };
 
