@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const PORT = "3001";
@@ -19,7 +19,7 @@ export const __getTodo = createAsyncThunk(
   async (args, thunkAPI) => {
     try {
       const response = await axios.get(
-        `http://localhost:${PORT}/todos`
+        `http://localhost:${PORT}/todos/${args}`
       );
 
       return thunkAPI.fulfillWithValue(response.data);
@@ -49,7 +49,6 @@ export const __postTodo = createAsyncThunk(
   }
 );
 
-
 const todoSlice = createSlice({
   name: "todoSlice",
   initialState,
@@ -60,13 +59,13 @@ const todoSlice = createSlice({
     },
     [__getTodo.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.todos = action.payload;
+      state.todo = action.payload;
     },
     [__getTodo.rejected]: (state, action) => {
       state.isLoading = false;
       state.err = action.payload;
     },
-    
+
     [__postTodo.pending]: (state, action) => {
       state.isLoading = true;
     },
