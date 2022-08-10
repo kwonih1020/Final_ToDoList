@@ -29,20 +29,50 @@
       "user": "2조",
       "title": "이게 왜 되지?.. 나도 몰라..",
       "body": "ㅜㅜㅜㅜㅜㅜ"
+    },
+    {
+      "id": "51",
+      "user": "얍",
+      "title": "얍얍",
+      "body": "얍얍얍"
+    },
+    {
+      "id": "511",
+      "user": "ㅋㅋ",
+      "title": "ㅋㅋㅋ",
+      "body": "ㅋㅋㅋㅋㅇㅇ1111"
+    },
+    {
+      "id": "5111",
+      "user": "ㅋㅋㅋ",
+      "title": "zㅋㅋ",
+      "body": "ㅋㅋㅋ"
+    },
+    {
+      "id": "51111",
+      "user": "rr",
+      "title": "rrr",
+      "body": "zzzzz"
     }
   ],
   "comments": [
     {
-      "origin_id": 1,
+      "origin_id": 2,
       "id": 1,
       "user": "ㅋㅋ",
       "desc": "ㅋㅋㄱㄱㅋㅋㅋㅋ"
     },
     {
-      "origin_id": 1,
+      "origin_id": 2,
       "id": 2,
       "user": "ㅇㄹㅇㄹ",
       "desc": "ㅋ"
+    },
+    {
+      "origin_id": 1,
+      "id": 3,
+      "user": "zzzzr",
+      "desc": "zzzzzttttt"
     }
   ]
 }
