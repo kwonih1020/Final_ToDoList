@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { __deleteTodo, __getTodoList } from "../redux/modules/todoListSlice";
 import { useDispatch } from "react-redux/es/exports";
 import { __deleteCommentsById } from "../redux/modules/commentListSlice";
+import Button from "./Button";
 
 const TodoListCard = ({ todo }) => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const TodoListCard = ({ todo }) => {
           <div className="title">{todo.title}</div>
           <div className="user">작성자 : {todo.user}</div>
         </div>
-        <button onClick={onClick}>삭제</button>
+        <Button onClick={onClick} size="medium">삭제</Button>
       </div>
     </StTodoListCard>
   );
@@ -43,6 +44,7 @@ const StTodoListCard = styled.div`
   box-sizing: border-box;
   margin-bottom: 10px;
   border-radius: 8px;
+  cursor: pointer;
   .flexBox {
     /* background-color: royalblue; */
     display: flex;
@@ -63,10 +65,6 @@ const StTodoListCard = styled.div`
         font-size: 12px;
         margin: 10px 0 0 0;
       }
-    }
-    button {
-      width: 80px;
-      height: 30px;
     }
   }
 `;

@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+
 import React, { useEffect } from "react";
 import GlobalLayout from "../global/GlobalLayout";
 import styled from "styled-components";
@@ -37,7 +39,7 @@ const TodoDetailPage = (props) => {
         <button>수정</button>
       </StBodyBox>
       <CommentSection />
-    </GlobalLayout>
+    </>
   );
 };
 

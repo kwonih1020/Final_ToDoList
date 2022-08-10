@@ -15,7 +15,7 @@ const StHomeNavigator = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgb(238, 238, 238);
+  border: 2px solid rgb(238, 238, 238);
   margin-top: 30px;
   border-radius: 8px;
   cursor: pointer;

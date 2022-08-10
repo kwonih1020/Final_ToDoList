@@ -1,36 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+// import Input from "../elements/Input";
+// import TextArea from "../elements/TextArea";
+// import Button from "../elements/Button";
+import { __postTodo } from "../../redux/modules/todoSlice";
+import { useDispatch } from "react-redux";
 
-const TodoAddForm = () => {
+function TodoAddForm() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [inputs, setInputs] = useState({
+    user: "",
+    title: "",
+    body: "",
+  });
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({ ...inputs, [name]: value });
+  };
   return (
-    <Form>
-      <div className="text">할일 기록하기</div>
-      <div className="icon">-&gt;</div>
-    </Form>
+    <StForm
+      onSubmit={(e) => {
+        e.preventDefault();
+        dispatch(__postTodo(inputs));
+        navigate("/");
+        setInputs({ user: "", title: "", body: "" });
+      }}>
+      <label htmlFor="user">작성자</label>
+      <input
+        name="user"
+        placeholder="작성자의 이름을 입력해주세요.(5자 이내)"
+        max="5"
+        onChange={onChange}
+        value={inputs.user}
+      />
+      <label htmlFor="title">제목</label>
+      <input
+        // size="wide"
+        // type="small"
+        name="title"
+        placeholder="제목을 입력해주세요.(50자 이내)"
+        max="50"
+        onChange={onChange}
+        value={inputs.title}
+      />
+      <label htmlFor="body">내용</label>
+      <textarea
+        // size="wide"
+        rows="20"
+        name="body"
+        placeholder="내용을 입력해주세요.(200자 이내)"
+        max="200"
+        onChange={onChange}
+        value={inputs.body}
+      />
+      <button>추가하기</button>
+    </StForm>
   );
-};
+}
 
 export default TodoAddForm;
 
-const Form = styled.div`
-  background-color: #fff;
-  border: 1px solid rgb(238, 238, 238);
-  width: 100%;
-  height: 120px;
-  border-radius: 6px;
-  padding: 0 20px;
-  box-sizing: border-box;
+const StForm = styled.form`
+  position: relative;
+  min-height: 50vh;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  .text {
-    font-size: 24px;
+  flex-direction: column;
+  label {
+    font-size: 1.6rem;
+    margin: 15px 0;
   }
-  .icon {
-    font-size: 24px;
+  input {
+    font-size: 1rem;
   }
-  &:hover {
-    box-shadow: rgb(0 0 0 / 10%) 1px 1px 1px;
+  button {
+    margin-top: 100px;
+    margin-bottom: 50px;
   }
 `;
