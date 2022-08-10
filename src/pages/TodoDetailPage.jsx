@@ -40,29 +40,30 @@ const TodoDetailPage = (props) => {
   };
   // console.log("data:", data);
   return (
-<>
-    <GlobalLayout>
-      <StDtailHeader>
-        <div className="id">Id : {data.id}</div>
-        <div className="goBack" onClick={goBack}>
-          이전으로
-        </div>
-      </StDtailHeader>
-      <StTitle>{data.title}</StTitle>
-      <StBodyBox className="bodybox">
-        {isEdit === false ? (
-          <div className="body">{data.body}</div>
-        ) : (
-          <TextArea
-            placeholder="수정할 내용을 입력하세요."
-            onChange={onChange}
-            defaultvalue={newBody}
-          />
-        )}
-        <button onClick={modify}>
-          {isEdit === false ? "수정하기" : " 저장하기"}
-        </button>
-      </StBodyBox>
+    <>
+      <GlobalLayout>
+        <StDtailHeader>
+          <div className="id">Id : {data.id}</div>
+          <div className="goBack" onClick={goBack}>
+            이전으로
+          </div>
+        </StDtailHeader>
+        <StTitle>{data.title}</StTitle>
+        <StBodyBox className="bodybox">
+          {isEdit === false ? (
+            <div className="body">{data.body}</div>
+          ) : (
+            <TextArea
+              placeholder="수정할 내용을 입력하세요."
+              onChange={onChange}
+              defaultvalue={newBody}
+            />
+          )}
+          <button onClick={modify}>
+            {isEdit === false ? "수정하기" : " 저장하기"}
+          </button>
+        </StBodyBox>
+      </GlobalLayout>
       <CommentSection />
     </>
   );
