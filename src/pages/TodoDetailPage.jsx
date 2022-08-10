@@ -39,7 +39,7 @@ const TodoDetailPage = (props) => {
         <button>수정</button>
       </StBodyBox>
       <CommentSection />
-    </>
+    </GlobalLayout>
   );
 };
 
