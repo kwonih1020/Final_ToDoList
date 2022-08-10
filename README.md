@@ -15,7 +15,7 @@
 - React, Redux/Toolkit 과 middleware Thunk를 활용하여 ToDoList앱을 만들었습니다.
 - 2022.08.05 ~ 2022.08.11
 
-## 주요기능
+## 주요기능@
 
 - 본문 CRUD 구현
   - 리스트 조회하기
