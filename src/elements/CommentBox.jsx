@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux/es/exports";
 import styled from "styled-components";
 import { __deleteComment, __patchComment } from "../redux/modules/commentSlice";
 import Button from "./Button";
-import styled from "styled-components";
 import Input from "./Input";
 
 const CommentBox = ({ id, user, desc, toggleActive, activation }) => {
