@@ -3,9 +3,8 @@ import TodoListCard from "../elements/TodoListCard";
 import GlobalLayout from "../global/GlobalLayout";
 
 import { useDispatch, useSelector } from "react-redux";
-import { __getTodo } from "../redux/modules/todoListSlice";
+import { __getTodoList } from "../redux/modules/todoListSlice";
 import { useEffect } from "react";
-// import axios from "axios";
 
 const TodoListPage = () => {
   const todos = useSelector((state) => state.todoListSlice.todos);
@@ -13,17 +12,27 @@ const TodoListPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(__getTodo());
+    dispatch(__getTodoList());
   }, [dispatch]);
 
-  // console.log("todo :", todo);
-  console.log("todos :", todos);
   return (
     <GlobalLayout>
       <h2>내 할 일</h2>
-      {todos.map((todo) => {
-        return <TodoListCard key={todo.id} todo={todo} />;
-      })}
+      {todos.length === 0 ? (
+        <h1
+          style={{
+            textDecorationLine: "underline",
+            textDecorationThickness: 3,
+            color: "red",
+          }}
+        >
+          할일이 읎다 않카나~! 정신 차리라 백수시키야
+        </h1>
+      ) : (
+        todos.map((todo) => {
+          return <TodoListCard key={todo.id} todo={todo} />;
+        })
+      )}
     </GlobalLayout>
   );
 };
