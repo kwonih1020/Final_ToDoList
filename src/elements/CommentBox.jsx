@@ -1,12 +1,12 @@
 // eslint-disable-next-line
 
-import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux/es/exports";
-import {
-  __deleteComment,
-  __getComment,
-  __patchComment,
-} from "../redux/modules/commentSlice";
+import React, { useCallback, useState } from "react";
+import { useDispatch } from "react-redux/es/exports";
+import { __deleteComment, __patchComment } from "../redux/modules/commentSlice";
+import Button from "./Button";
+import styled from "styled-components";
+import Input from "./Input";
+
 const CommentBox = ({ id, user, desc }) => {
   const targetId = id;
   const [isEdit, setIsEdit] = useState(false);
@@ -33,7 +33,6 @@ const CommentBox = ({ id, user, desc }) => {
       if (newDesc !== "") {
         dispatch(__patchComment({ targetId, newDesc }));
       }
-
       setIsEdit(false);
     } else {
       setIsEdit(true);
@@ -41,18 +40,65 @@ const CommentBox = ({ id, user, desc }) => {
   }, [isEdit, newDesc]);
 
   return (
-    <>
-      <div>
-        <h3>{user}</h3>
-        {isEdit ? <input type="text" onChange={onChange} /> : <p>{desc}</p>}
-      </div>
-      <div>
+    <StComment>
+      <StInputWrapper>
+        <div className="inputContainer">
+          {user}
+          {isEdit ? (
+            <Input className="isEditInput" type="text" onChange={onChange} />
+          ) : (
+            <p>{desc}</p>
+          )}
+        </div>
+      </StInputWrapper>
+      <StControlGroup>
         {/* Button Element 사용하기 */}
-        <button onClick={onPatch}>수정</button>
-        <button onClick={onDelete}>{isEdit ? "취소" : "삭제"}</button>
-      </div>
-    </>
+        <Button size="medium" onClick={onPatch}>
+          수정
+        </Button>
+        <Button size="medium" onClick={onDelete}>
+          {isEdit ? "취소" : "삭제"}
+        </Button>
+      </StControlGroup>
+    </StComment>
   );
 };
 
 export default React.memo(CommentBox);
+
+const StComment = styled.div`
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  height: 75px;
+  padding: 0px 12px;
+`;
+
+const StControlGroup = styled.div`
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-shrink: 0;
+  gap: 3px;
+`;
+
+const StInputWrapper = styled.div`
+  width: 70%;
+  height: auto;
+  display: flex;
+  .inputContainer {
+    display: block;
+    width: 100%;
+    margin-top: 2px;
+  }
+  .isEditInput {
+    margin-top: 5px;
+  }
+`;
