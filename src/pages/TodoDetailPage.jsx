@@ -40,6 +40,7 @@ const TodoDetailPage = (props) => {
   };
   // console.log("data:", data);
   return (
+<>
     <GlobalLayout>
       <StDtailHeader>
         <div className="id">Id : {data.id}</div>
@@ -63,7 +64,7 @@ const TodoDetailPage = (props) => {
         </button>
       </StBodyBox>
       <CommentSection />
-    </GlobalLayout>
+    </>
   );
 };
 
