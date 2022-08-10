@@ -52,13 +52,13 @@ export const __patchTodo = createAsyncThunk(
     try {
       const targetId = payload.id;
       // console.log("targetId:", targetId);
-      console.log("payload:", payload);
+      // console.log("payload:", payload);
       const newBody = { body: payload.newBody };
       const data = await axios.patch(
         `http://localhost:3001/todos/${targetId}`,
         newBody
       );
-      console.log(newBody);
+      // console.log(newBody);
       return thunkApi.fulfillWithValue(data.data);
     } catch (e) {
       return thunkApi.rejectWithValue(e);

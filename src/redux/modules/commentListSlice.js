@@ -50,7 +50,7 @@ export const __postComments = createAsyncThunk(
     try {
       const commentList = await axios.get(commentServer);
       const { user, desc, targetId } = { ...payload };
-      console.log(payload);
+      // console.log(payload);
       const commentPost = await axios.post(commentServer, {
         origin_id: targetId,
         id: commentList.data.at(-1)?.id + 1,
