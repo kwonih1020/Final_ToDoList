@@ -2,13 +2,12 @@ import React from "react";
 import TodoAddForm from "../components/todos/TodoAddForm";
 import GlobalLayout from "../global/GlobalLayout";
 
-function TodoAddFormPage () {
+function TodoAddFormPage() {
   return (
     <GlobalLayout>
-      <TodoAddForm/>
+      <TodoAddForm />
     </GlobalLayout>
-    
   );
-};
+}
 
 export default TodoAddFormPage;
