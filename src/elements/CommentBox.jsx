@@ -1,19 +1,126 @@
-import React from "react";
+// eslint-disable-next-line
 
-const CommentBox = ({ id, user, desc }) => {
+import React, { useCallback, useState, useRef } from "react";
+import { useDispatch } from "react-redux/es/exports";
+import styled from "styled-components";
+import { __deleteComment, __patchComment } from "../redux/modules/commentSlice";
+import Button from "./Button";
+import Input from "./Input";
+
+const CommentBox = ({ id, user, desc, toggleActive, activation }) => {
+  const targetId = id;
+  const [isEdit, setIsEdit] = useState(false);
+  const [newDesc, setnewDesc] = useState(desc);
+  const dispatch = useDispatch();
+  const onChange = useCallback(
+    (e) => {
+      setnewDesc(e.target.value);
+    },
+    [newDesc]
+  );
+  const onDelete = useCallback(() => {
+    if (!isEdit) {
+      dispatch(__deleteComment(targetId));
+      setIsEdit(false);
+    } else if (isEdit) {
+      toggleActive(targetId);
+      setIsEdit(!isEdit);
+    }
+  }, [isEdit]);
+
+  const onPatch = useCallback(() => {
+    if (isEdit) {
+      if (newDesc !== "") {
+        dispatch(__patchComment({ targetId, newDesc }));
+      }
+      setIsEdit(false);
+    } else {
+      setIsEdit(true);
+    }
+    toggleActive(targetId);
+  }, [isEdit, newDesc]);
+
   return (
-    <>
-      <div>
-        <h3>{user}</h3>
-        <p>{desc}</p>
-      </div>
-      <div>
+    <StComment>
+      <StInputWrapper>
+        <div className="inputContainer">
+          {user}
+          {isEdit ? (
+            <Input
+              className="isEditInput"
+              type="text"
+              onChange={onChange}
+              initValue={newDesc}
+            />
+          ) : (
+            <p>{desc}</p>
+          )}
+        </div>
+      </StInputWrapper>
+      <StControlGroup>
         {/* Button Element 사용하기 */}
-        <button>수정</button>
-        <button>삭제</button>
-      </div>
-    </>
+        {activation ? (
+          <>
+            <Button size="medium" onClick={onPatch}>
+              수정
+            </Button>
+            <Button size="medium" onClick={onDelete}>
+              {isEdit ? "취소" : "삭제"}
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button size="medium" className="stopButton">
+              수정
+            </Button>
+            <Button size="medium" className="stopButton">
+              {isEdit ? "취소" : "삭제"}
+            </Button>
+          </>
+        )}
+      </StControlGroup>
+    </StComment>
   );
 };
 
-export default CommentBox;
+export default React.memo(CommentBox);
+
+const StComment = styled.div`
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  height: 75px;
+  padding: 0px 29px;
+`;
+
+const StControlGroup = styled.div`
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-shrink: 0;
+  gap: 3px;
+  .stopButton {
+    background-color: #957e7e;
+  }
+`;
+
+const StInputWrapper = styled.div`
+  width: 70%;
+  height: auto;
+  display: flex;
+  .inputContainer {
+    display: block;
+    width: 100%;
+    margin-top: 2px;
+  }
+  .isEditInput {
+    margin-top: 5px;
+  }
+`;
