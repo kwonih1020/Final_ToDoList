@@ -55,7 +55,7 @@ export const __postComments = createAsyncThunk(
       const { user, desc, targetId } = { ...payload };
       const commentPost = await axios.post(commentServer, {
         origin_id: targetId,
-        id: commentList.data.at(-1).id + 1,
+        id: commentList.data.at(-1)?.id + 1,
         user,
         desc,
       });
