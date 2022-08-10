@@ -76,7 +76,13 @@ const StDtailHeader = styled.div`
   margin-bottom: 35px;
   .goBack {
     cursor: pointer;
-    text-decoration: teal wavy underline;
+    transition: transform 0.5s;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.25);
+      text-decoration: teal wavy underline;
+    }
   }
 `;
 
@@ -104,7 +110,7 @@ const StBodyBox = styled.div`
   height: 550px;
   margin-top: 50px;
   .body {
-    font-size: 18px;
+    font-size: 26px;
     font-weight: 600;
   }
   button {
@@ -123,7 +129,7 @@ const StBodyBox = styled.div`
     transition: all 0.5s;
     outline: none;
     &:hover {
-      background-color: rgb(178, 176, 176);
+      background-color: #ddd;
       border: 2px solid #2f2f2f;
       color: #fff;
     }
