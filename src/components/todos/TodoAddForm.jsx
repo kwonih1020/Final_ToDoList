@@ -5,7 +5,7 @@ const TodoAddForm = () => {
   return (
     <Form>
       <div className="text">할일 기록하기</div>
-      <div className="icon">-&gt;</div>
+      <div className="icon"></div>
     </Form>
   );
 };
