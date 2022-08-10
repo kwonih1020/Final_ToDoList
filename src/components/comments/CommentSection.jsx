@@ -46,7 +46,7 @@ const CommentUpContainer = styled.div`
       }
       case false: {
         return css`
-          height: 25px;
+          height: 56px;
         `;
       }
     }
