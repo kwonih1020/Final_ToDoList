@@ -18,11 +18,12 @@ const StHomeNavigator = styled.div`
   border: 1px solid rgb(238, 238, 238);
   margin-top: 30px;
   border-radius: 8px;
-
-  background-color: rgba(116, 30, 30, 0.2);
+  cursor: pointer;
   h3 {
     font-size: 24px;
     font-weight: 400;
+    transform: scale(0.9);
+    transition: all 0.5s;
   }
   div {
     font-size: 24px;
@@ -31,6 +32,9 @@ const StHomeNavigator = styled.div`
   }
   &:hover {
     box-shadow: rgb(0 0 0 / 10%) 4px 6px 5px;
+    h3 {
+      transform: scale(1.12);
+    }
     div {
       font-size: 32px;
       font-weight: 400;

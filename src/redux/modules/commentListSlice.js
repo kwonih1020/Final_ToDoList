@@ -102,7 +102,7 @@ const commentListSlice = createSlice({
     [__getInitialComments.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.comments = action.payload;
-      console.log(state.comments);
+      // console.log(state.comments);
     },
     [__getInitialComments.rejected]: (state, action) => {
       state.isLoading = false;

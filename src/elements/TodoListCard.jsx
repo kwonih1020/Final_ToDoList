@@ -9,14 +9,10 @@ const TodoListCard = ({ todo }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const onDeleteHandler = () => {
-  //   dispatch(__deleteTodo(todo.id));
-  // };
-
   const onClick = (e) => {
     e.stopPropagation();
     const result = window.confirm("진짜 지울꺼임?");
-    // console.log(result);
+
     if (result === true) {
       dispatch(__deleteTodo(todo.id));
       dispatch(__getTodoList());
@@ -25,7 +21,7 @@ const TodoListCard = ({ todo }) => {
   };
 
   return (
-    <StTodoListCard onClick={() => navigate("./:id")}>
+    <StTodoListCard onClick={() => navigate(`./${todo.id}`)}>
       <div className="flexBox">
         <div className="info">
           <div className="title">{todo.title}</div>
