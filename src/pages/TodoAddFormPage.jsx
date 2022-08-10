@@ -1,10 +1,14 @@
 import React from "react";
+import TodoAddForm from "../components/todos/TodoAddForm";
+import GlobalLayout from "../global/GlobalLayout";
 
-const TodoAddFormPage = (props) => {
+function TodoAddFormPage () {
   return (
-    <div>
+    <GlobalLayout>
       <h1>TodoAddFormPage입니다.</h1>
-    </div>
+      <TodoAddForm/>
+    </GlobalLayout>
+    
   );
 };
 
