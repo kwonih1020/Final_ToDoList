@@ -15,7 +15,7 @@ const TodoDetailPage = (props) => {
   const todo = useSelector((state) => state.todoListSlice.todos);
   const { id } = useParams;
 
-  console.log("Detail-todo:", todo);
+  // console.log("Detail-todo:", todo);
 
   useEffect(() => {
     dispatch(__getTodoList());
@@ -26,20 +26,22 @@ const TodoDetailPage = (props) => {
   };
 
   return (
-    <GlobalLayout>
-      <StDtailHeader>
-        <div className="id">Id : {todo.id}</div>
-        <div className="goBack" onClick={goBack}>
-          이전으로
-        </div>
-      </StDtailHeader>
-      <StTitle>{todo.title}</StTitle>
-      <StBodyBox>
-        <div className="body">{todo.body}</div>
-        <button>수정</button>
-      </StBodyBox>
+    <>
+      <GlobalLayout>
+        <StDtailHeader>
+          <div className="id">Id : {todo.id}</div>
+          <div className="goBack" onClick={goBack}>
+            이전으로
+          </div>
+        </StDtailHeader>
+        <StTitle>{todo.title}</StTitle>
+        <StBodyBox>
+          <div className="body">{todo.body}</div>
+          <button>수정</button>
+        </StBodyBox>
+      </GlobalLayout>
       <CommentSection />
-    </GlobalLayout>
+    </>
   );
 };
 
