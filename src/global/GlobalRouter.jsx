@@ -11,8 +11,8 @@ function GlobalRouter() {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/add" element={<TodoAddFormPage />} />
-        <Route path="/works" element={<TodoListPage />} />
-        <Route path="/works/:id" element={<TodoDetailPage />} />
+        <Route path="/todos" element={<TodoListPage />} />
+        <Route path="/todos/:id" element={<TodoDetailPage />} />
       </Routes>
     </>
   );
