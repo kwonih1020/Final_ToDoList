@@ -7,12 +7,6 @@
       "body": "33"
     },
     {
-      "id": 2,
-      "user": "채운",
-      "title": "나는 코딩이 싫어",
-      "body": "dddd"
-    },
-    {
       "id": 3,
       "user": "ㅇㄴㅇㄹ",
       "title": "321",
@@ -31,36 +25,30 @@
       "body": "123"
     },
     {
-      "id": 6,
-      "user": "심채운",
-      "title": "볶음밥 2",
-      "body": "라고 할 뻔"
+      "id": 7,
+      "user": "확인합니다",
+      "title": "확인합니다",
+      "body": "확인@"
+    },
+    {
+      "id": 8,
+      "user": "11111",
+      "title": "11111",
+      "body": "11111"
     }
   ],
   "comments": [
     {
-      "origin_id": 2,
-      "id": 22233,
-      "user": "234",
-      "desc": "descr212iption"
-    },
-    {
-      "origin_id": 6,
-      "id": 22235,
-      "user": "권익현",
-      "desc": "돼지 볶음밥?"
-    },
-    {
       "origin_id": 1,
-      "id": 22236,
-      "user": "ㅇㄴㅁㅇㄴ",
-      "desc": "ㄴㅇㅁㄴㅇㅁㄴ"
-    },
-    {
-      "origin_id": 1,
-      "id": 22237,
+      "id": 1,
       "user": "ㅁㄴㅇㅁㄴ",
       "desc": "ㄴㅇㅁㄴㅇ"
+    },
+    {
+      "origin_id": 1,
+      "id": 2,
+      "user": "asdsa",
+      "desc": "dsadas"
     }
   ]
 }

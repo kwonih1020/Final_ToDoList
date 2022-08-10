@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// const PORT = "3001";
+const todoServer = process.env.REACT_APP_TODOS;
+
 const initialState = {
   todo: {
     id: 0,
@@ -18,7 +19,7 @@ export const __getTodo = createAsyncThunk(
   async (args, thunkAPI) => {
     try {
       // console.log("args:", args);
-      const response = await axios.get(`http://localhost:3001/todos/${args}`);
+      const response = await axios.get(todoServer + `/${args}`);
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -30,9 +31,9 @@ export const __postTodo = createAsyncThunk(
   "todos/__postTodo",
   async (args, thunkAPI) => {
     try {
-      const getList = await axios.get(`http://localhost:3001/todos`);
+      const getList = await axios.get(todoServer);
       const { user, title, body } = { ...args };
-      const response = await axios.post(`http://localhost:3001/todos`, {
+      const response = await axios.post(todoServer, {
         id: getList.data?.at(-1)?.id + 1,
         user,
         title,
@@ -54,10 +55,7 @@ export const __patchTodo = createAsyncThunk(
       // console.log("targetId:", targetId);
       // console.log("payload:", payload);
       const newBody = { body: payload.newBody };
-      const data = await axios.patch(
-        `http://localhost:3001/todos/${targetId}`,
-        newBody
-      );
+      const data = await axios.patch(todoServer + `/${targetId}`, newBody);
       // console.log(newBody);
       return thunkApi.fulfillWithValue(data.data);
     } catch (e) {

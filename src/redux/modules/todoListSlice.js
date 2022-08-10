@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const todoServer = process.env.REACT_APP_TODOS;
+
 const initialState = {
   todos: [],
   isLoading: false,
@@ -11,7 +13,7 @@ export const __getTodoList = createAsyncThunk(
   "__getTodoList",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get("http://localhost:3001/todos");
+      const data = await axios.get(todoServer);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -23,7 +25,7 @@ export const __deleteTodo = createAsyncThunk(
   "__deleteTodo",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.delete(`http://localhost:3001/todos/${payload}`);
+      const data = await axios.delete(todoServer + `/${payload}`);
       // console.log("data", data.data);
       thunkAPI.fulfillWithValue(data.data);
     } catch (e) {
