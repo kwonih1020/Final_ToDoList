@@ -55,7 +55,7 @@ export const __postComments = createAsyncThunk(
       const { user, desc, targetId } = { ...payload };
       const commentPost = await axios.post(commentServer, {
         origin_id: targetId,
-        id: commentList.data.at(-1).id + 1,
+        id: commentList.data.at(-1)?.id + 1,
         user,
         desc,
       });
@@ -73,13 +73,12 @@ export const __deleteCommentsById = createAsyncThunk(
       const getByIdRes = await axios.get(
         commentServer + `?origin_id=${payload}`
       );
-      console.log(getByIdRes.data);
       for (let i = 0; i < getByIdRes.data.length; i++) {
         if (i === getByIdRes.data.length - 1) {
           const deleteAllCommentRes = await axios.delete(
             commentServer + `/${getByIdRes.data[i].id}`
           );
-          return thunkAPI.fulfillWithValue(deleteAllCommentRes);
+          return thunkAPI.fulfillWithValue(deleteAllCommentRes.data);
         } else {
           axios.delete(commentServer + `/${getByIdRes.data[i].id}`);
         }

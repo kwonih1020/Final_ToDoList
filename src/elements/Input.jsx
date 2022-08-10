@@ -4,7 +4,9 @@ import React from "react";
 import styled from "styled-components";
 
 const Input = (props) => {
-  return <StInput {...props} required={true} minLength={3} />;
+  return (
+    <StInput {...props} required={true} minLength={3} value={props.initValue} />
+  );
 };
 
 export default Input;

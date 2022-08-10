@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useRef } from "react";
 import { useDispatch } from "react-redux/es/exports";
 import styled from "styled-components";
 import { __deleteComment, __patchComment } from "../redux/modules/commentSlice";
@@ -10,9 +10,8 @@ import Input from "./Input";
 const CommentBox = ({ id, user, desc, toggleActive, activation }) => {
   const targetId = id;
   const [isEdit, setIsEdit] = useState(false);
-  const [newDesc, setnewDesc] = useState("");
+  const [newDesc, setnewDesc] = useState(desc);
   const dispatch = useDispatch();
-
   const onChange = useCallback(
     (e) => {
       setnewDesc(e.target.value);
@@ -47,7 +46,12 @@ const CommentBox = ({ id, user, desc, toggleActive, activation }) => {
         <div className="inputContainer">
           {user}
           {isEdit ? (
-            <Input className="isEditInput" type="text" onChange={onChange} />
+            <Input
+              className="isEditInput"
+              type="text"
+              onChange={onChange}
+              initValue={newDesc}
+            />
           ) : (
             <p>{desc}</p>
           )}
