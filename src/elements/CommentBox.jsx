@@ -66,18 +66,18 @@ const CommentBox = ({ id, user, desc, toggleActive, activation }) => {
           </>
         ) : (
           <>
-            <StTestBtn>수정</StTestBtn>
-            <StTestBtn>{isEdit ? "취소" : "삭제"}</StTestBtn>
+            <Button size="medium" className="stopButton">
+              수정
+            </Button>
+            <Button size="medium" className="stopButton">
+              {isEdit ? "취소" : "삭제"}
+            </Button>
           </>
         )}
       </StControlGroup>
     </StComment>
   );
 };
-
-const StTestBtn = styled.button`
-  background-color: red;
-`;
 
 export default React.memo(CommentBox);
 
@@ -102,6 +102,9 @@ const StControlGroup = styled.div`
   flex-direction: row;
   flex-shrink: 0;
   gap: 3px;
+  .stopButton {
+    background-color: #957e7e;
+  }
 `;
 
 const StInputWrapper = styled.div`
