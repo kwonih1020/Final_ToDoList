@@ -1,28 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
-// import { useSelector } from "react-redux";
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-// import { getName } from "../redux/modules/todoListSlice";
+import { __deleteTodo, __getTodoList } from "../redux/modules/todoListSlice";
+import { useDispatch } from "react-redux/es/exports";
+import { __deleteCommentsById } from "../redux/modules/commentListSlice";
 
 const TodoListCard = ({ todo }) => {
-  // const todos = useSelector((state) => state.todoListSlice.todos);
-  // const [todo, setTodo] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // const fetchTodos = async () => {
-  //   const { data } = await axios.get("http://localhost:3001/todos");
-  //   setTodo(data);
+  // const onDeleteHandler = () => {
+  //   dispatch(__deleteTodo(todo.id));
   // };
 
-  // useEffect(() => {
-  //   fetchTodos();
-  // }, []);
-
-  const navigate = useNavigate();
-  // console.log("Card todo :", todo);
-  // console.log(todos);
+  const onClick = (e) => {
+    e.stopPropagation();
+    const result = window.confirm("진짜 지울꺼임?");
+    // console.log(result);
+    if (result === true) {
+      dispatch(__deleteTodo(todo.id));
+      dispatch(__getTodoList());
+      dispatch(__deleteCommentsById(todo.id));
+    }
+  };
 
   return (
     <StTodoListCard onClick={() => navigate("./:id")}>
@@ -31,7 +31,7 @@ const TodoListCard = ({ todo }) => {
           <div className="title">{todo.title}</div>
           <div className="user">작성자 : {todo.user}</div>
         </div>
-        <button>삭제</button>
+        <button onClick={onClick}>삭제</button>
       </div>
     </StTodoListCard>
   );

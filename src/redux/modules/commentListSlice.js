@@ -79,7 +79,7 @@ export const __deleteCommentsById = createAsyncThunk(
           const deleteAllCommentRes = await axios.delete(
             commentServer + `/${getByIdRes.data[i].id}`
           );
-          return thunkAPI.fulfillWithValue(deleteAllCommentRes);
+          return thunkAPI.fulfillWithValue(deleteAllCommentRes.data);
         } else {
           axios.delete(commentServer + `/${getByIdRes.data[i].id}`);
         }
