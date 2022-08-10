@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CommentBox from "../../elements/CommentBox";
 import {
   __getComments,
@@ -19,11 +19,11 @@ const CommentList = () => {
     id: 0,
     status: false,
   });
-  // const { targetId } = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(__getInitialComments(1));
+    dispatch(__getInitialComments(parseInt(id)));
   }, [isDone]);
 
   const infiniteListener = async (e) => {

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux/es/exports";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { __postComments } from "../../redux/modules/commentListSlice";
 import Button from "../../elements/Button";
 import Input from "../../elements/Input";
@@ -11,7 +11,7 @@ import Input from "../../elements/Input";
 const CommentForm = () => {
   const dispatch = useDispatch();
   // **마찬가지로 추후 본문쪽에서 targetId 파라미터 가져와서 재연결 필요** = 권익현
-  // const { targetId } = useParams();
+  const { id } = useParams();
 
   const [inputs, setInputs] = useState({
     user: "",
@@ -30,7 +30,7 @@ const CommentForm = () => {
     e.preventDefault();
     dispatch(
       __postComments({
-        targetId: parseInt(1),
+        targetId: parseInt(id),
         ...inputs,
       })
     );

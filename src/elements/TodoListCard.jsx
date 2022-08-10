@@ -16,8 +16,8 @@ const TodoListCard = ({ todo }) => {
 
     if (result === true) {
       dispatch(__deleteTodo(todo.id));
-      dispatch(__getTodoList());
       dispatch(__deleteCommentsById(todo.id));
+      dispatch(__getTodoList());
     }
   };
 
@@ -28,7 +28,9 @@ const TodoListCard = ({ todo }) => {
           <div className="title">{todo.title}</div>
           <div className="user">작성자 : {todo.user}</div>
         </div>
-        <Button onClick={onClick} size="medium">삭제</Button>
+        <Button onClick={onClick} size="medium">
+          삭제
+        </Button>
       </div>
     </StTodoListCard>
   );
