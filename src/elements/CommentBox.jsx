@@ -2,12 +2,13 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
+import styled from "styled-components";
 import {
   __deleteComment,
   __getComment,
   __patchComment,
 } from "../redux/modules/commentSlice";
-const CommentBox = ({ id, user, desc }) => {
+const CommentBox = ({ id, user, desc, toggleActive, activation }) => {
   const targetId = id;
   const [isEdit, setIsEdit] = useState(false);
   const [newDesc, setnewDesc] = useState("");
@@ -24,6 +25,7 @@ const CommentBox = ({ id, user, desc }) => {
       dispatch(__deleteComment(targetId));
       setIsEdit(false);
     } else if (isEdit) {
+      toggleActive(targetId);
       setIsEdit(!isEdit);
     }
   }, [isEdit]);
@@ -38,6 +40,7 @@ const CommentBox = ({ id, user, desc }) => {
     } else {
       setIsEdit(true);
     }
+    toggleActive(targetId);
   }, [isEdit, newDesc]);
 
   return (
@@ -48,11 +51,24 @@ const CommentBox = ({ id, user, desc }) => {
       </div>
       <div>
         {/* Button Element 사용하기 */}
-        <button onClick={onPatch}>수정</button>
-        <button onClick={onDelete}>{isEdit ? "취소" : "삭제"}</button>
+        {activation ? (
+          <>
+            <button onClick={onPatch}>수정</button>
+            <button onClick={onDelete}>{isEdit ? "취소" : "삭제"}</button>
+          </>
+        ) : (
+          <>
+            <StTestBtn>수정</StTestBtn>
+            <StTestBtn>{isEdit ? "취소" : "삭제"}</StTestBtn>
+          </>
+        )}
       </div>
     </>
   );
 };
+
+const StTestBtn = styled.button`
+  background-color: red;
+`;
 
 export default React.memo(CommentBox);
