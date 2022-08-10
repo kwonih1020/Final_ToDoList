@@ -52,6 +52,7 @@ const CommentUpContainer = styled.div`
     }
   }}
   transition: height 0.6s ease-in-out;
+  box-sizing: border-box;
 `;
 
 const CommentUpDetail = styled.div`
