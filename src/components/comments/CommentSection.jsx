@@ -46,12 +46,13 @@ const CommentUpContainer = styled.div`
       }
       case false: {
         return css`
-          height: 25px;
+          height: 56px;
         `;
       }
     }
   }}
   transition: height 0.6s ease-in-out;
+  box-sizing: border-box;
 `;
 
 const CommentUpDetail = styled.div`

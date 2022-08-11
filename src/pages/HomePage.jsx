@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import HomeNavigator from "../components/home/HomeNavigator";
 import GlobalLayout from "../global/GlobalLayout";
 
@@ -13,11 +13,15 @@ const HomePage = (props) => {
         <div className="title">무엇을 할까요?</div>
         <HomeNavigator onClick={() => navigate("/add")}>
           <h3>할 일 기록하기</h3>
-          <div>-&gt;</div>
+          <div>
+            <BsFillArrowRightCircleFill />
+          </div>
         </HomeNavigator>
         <HomeNavigator onClick={() => navigate("/todos")}>
           <h3>Todo List</h3>
-          <div>-&gt;</div>
+          <div>
+            <BsFillArrowRightCircleFill />
+          </div>
         </HomeNavigator>
       </Wrap>
     </GlobalLayout>

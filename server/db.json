@@ -1,28 +1,28 @@
 {
   "todos": [
     {
-      "id": "1",
+      "id": 1,
       "user": "채운",
       "title": "나는 코딩이 좋아",
-      "body": "dddd"
+      "body": "33"
     },
     {
-      "id": "2",
-      "user": "태훈",
-      "title": "나는 코딩이 싫어",
-      "body": "ffff"
+      "id": 3,
+      "user": "ㅇㄴㅇㄹ",
+      "title": "321",
+      "body": "31"
     },
     {
-      "id": "3",
-      "user": "익현",
-      "title": "나는 코딩을 사랑해 라고 할뻔",
-      "body": "ㅗㅗㅗㅗㅗ"
+      "id": 4,
+      "user": "534",
+      "title": "4564",
+      "body": "465"
     },
     {
-      "id": "4",
-      "user": "도욱",
-      "title": "개가튼 리웨엑트",
-      "body": "ㅜㅜㅜㅜㅜㅜ"
+      "id": 5,
+      "user": "56465",
+      "title": "456",
+      "body": "123"
     },
     {
       "id": "5",
@@ -47,32 +47,14 @@
       "user": "ㅋㅋㅋ",
       "title": "zㅋㅋ",
       "body": "ㅋㅋㅋ"
-    },
-    {
-      "id": "51111",
-      "user": "rr",
-      "title": "rrr",
-      "body": "zzzzz"
     }
   ],
   "comments": [
     {
       "origin_id": 2,
       "id": 1,
-      "user": "ㅋㅋ",
-      "desc": "ㅋㅋㄱㄱㅋㅋㅋㅋ"
-    },
-    {
-      "origin_id": 2,
-      "id": 2,
-      "user": "ㅇㄹㅇㄹ",
-      "desc": "ㅋ"
-    },
-    {
-      "origin_id": 1,
-      "id": 3,
-      "user": "zzzzr",
-      "desc": "zzzzzttttt"
+      "user": "ㅁㄴㅇㅁㄴ",
+      "desc": "ㄴㅇㅁㄴㅇ"
     }
   ]
 }

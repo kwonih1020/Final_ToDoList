@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 // import Button from "../elements/Button";
 import { __postTodo } from "../../redux/modules/todoSlice";
 import { useDispatch } from "react-redux";
+import Button from "../../elements/Button";
+import Input from "../../elements/Input";
 
 function TodoAddForm() {
   const navigate = useNavigate();
@@ -27,10 +29,11 @@ function TodoAddForm() {
         dispatch(__postTodo(inputs));
         navigate("/");
         setInputs({ user: "", title: "", body: "" });
-      }}
-    >
+      }}>
       <label htmlFor="user">작성자</label>
-      <input
+      <Input
+        size="wide"
+        type="small"
         name="user"
         placeholder="작성자의 이름을 입력해주세요.(5자 이내)"
         max="5"
@@ -38,9 +41,9 @@ function TodoAddForm() {
         value={inputs.user}
       />
       <label htmlFor="title">제목</label>
-      <input
-        // size="wide"
-        // type="small"
+      <Input
+        size="wide"
+        type="small"
         name="title"
         placeholder="제목을 입력해주세요.(50자 이내)"
         max="50"
@@ -48,18 +51,16 @@ function TodoAddForm() {
         value={inputs.title}
       />
       <label htmlFor="body">내용</label>
-      <textarea
-        // size="wide"
+      <Textarea
+        size="wide"
         rows="20"
         name="body"
         placeholder="내용을 입력해주세요.(200자 이내)"
-        max="200"
+        maxlength="200"
         onChange={onChange}
         value={inputs.body}
       />
-      <button>
-        추가하기
-      </button>
+      <Button size="large">추가하기</Button>
     </StForm>
   );
 }
@@ -83,3 +84,10 @@ const StForm = styled.form`
     margin-bottom: 50px;
   }
 `;
+
+const Textarea = styled.textarea`
+  width: 100%;
+  border: 1px solid rgb(238, 238, 238);
+  padding: 12px;
+  font-size: 14px;
+`

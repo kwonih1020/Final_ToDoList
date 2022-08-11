@@ -1,27 +1,36 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const todoServer = process.env.REACT_APP_TODOS;
+
 const initialState = {
   todos: [],
   isLoading: false,
   error: null,
 };
 
-// thunk 함수 안에서 해야할것 1. 중간작업 2. dispatch(원래하려고했던 dispatch)
-export const __getTodo = createAsyncThunk(
-  "__getTodo",
+export const __getTodoList = createAsyncThunk(
+  "__getTodoList",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get("http://localhost:3001/todos");
-
-      return thunkAPI.fulfillWithValue(data.data); // dispatch를 자동으로 해줌, 요청이 성공했을 때만
+      const data = await axios.get(todoServer);
+      return thunkAPI.fulfillWithValue(data.data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
+  }
+);
 
-    // console.log(data.data);
-    // store에 넣기
-    // console.log("thunkAPI", thunkAPI.getState());
+export const __deleteTodo = createAsyncThunk(
+  "__deleteTodo",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await axios.delete(todoServer + `/${payload}`);
+      // console.log("data", data.data);
+      thunkAPI.fulfillWithValue(data.data);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
   }
 );
 
@@ -30,14 +39,29 @@ const todoListSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [__getTodo.fulfilled]: (state, action) => {
-      // console.log("state:", state.todos);
-      console.log(action.payload);
-      state.todos = action.payload;
-      console.log(state.todos);
+    [__getTodoList.pending]: (state, action) => {
+      state.isLoading = true;
     },
-    [__getTodo.rejected]: (state, action) => {
-      console.log(action);
+    [__getTodoList.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.todos = action.payload;
+    },
+    [__getTodoList.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.err = action.payload;
+    },
+
+    // ---------------------------------------
+    //deleteTodo
+    [__deleteTodo.pending]: (state, action) => {
+      state.isLoading = true;
+    },
+    [__deleteTodo.fulfilled]: (state, action) => {
+      state.isLoading = false;
+    },
+    [__deleteTodo.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.err = action.payload;
     },
   },
 });

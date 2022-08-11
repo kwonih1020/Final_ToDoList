@@ -5,7 +5,6 @@ import axios from "axios";
 
 const commentServer = process.env.REACT_APP_COMMENTS;
 
-// ---- 권익현 ----
 const initialState = {
   comments: [],
   isLoading: false,
@@ -18,7 +17,6 @@ export const __getInitialComments = createAsyncThunk(
     try {
       const targetId = payload;
       const commentList = await axios.get(
-        // 추후 env를 통해 json-server (heroku url) 가려줘야함
         commentServer + `?origin_id=${targetId}&_end=8`
       );
       return thunkAPI.fulfillWithValue(commentList.data);
@@ -36,7 +34,6 @@ export const __getComments = createAsyncThunk(
       const getStartIdx = payload.getStartIdx;
       const targetId = payload.targetId;
       const commentList = await axios.get(
-        // 추후 env를 통해 json-server (heroku url) 가려줘야함
         commentServer + `?origin_id=${targetId}&_start=${getStartIdx}&_limit=6`
       );
 
@@ -53,6 +50,7 @@ export const __postComments = createAsyncThunk(
     try {
       const commentList = await axios.get(commentServer);
       const { user, desc, targetId } = { ...payload };
+      // console.log(payload);
       const commentPost = await axios.post(commentServer, {
         origin_id: targetId,
         id: commentList.data.at(-1)?.id + 1,
@@ -101,7 +99,7 @@ const commentListSlice = createSlice({
     [__getInitialComments.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.comments = action.payload;
-      console.log(state.comments);
+      // console.log(state.comments);
     },
     [__getInitialComments.rejected]: (state, action) => {
       state.isLoading = false;
@@ -123,15 +121,15 @@ const commentListSlice = createSlice({
     },
     // Comment List Reducer POST
     [__postComments.pending]: (state) => {
-      state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
+      state.isLoading = true;
     },
     [__postComments.fulfilled]: (state, action) => {
-      state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
-      state.comments.push(action.payload); // Store에 있는 todos에 서버에서 가져온 todos를 넣습니다.
+      state.isLoading = false;
+      state.comments.push(action.payload);
     },
     [__postComments.rejected]: (state, action) => {
-      state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
-      state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
+      state.isLoading = false;
+      state.error = action.payload;
     },
     [__deleteCommentsById.pending]: (state, action) => {
       state.isLoading = true;
@@ -148,4 +146,3 @@ const commentListSlice = createSlice({
 });
 
 export default commentListSlice.reducer;
-// ---- 권익현 ----
