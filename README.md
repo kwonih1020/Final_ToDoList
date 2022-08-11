@@ -57,13 +57,18 @@
 ##
 
 ## 메인페이지
+![Screen Shot 2022-08-11 at 10 22 54 AM](https://user-images.githubusercontent.com/26310384/184049371-b4acdbd6-10c0-4abe-ad32-89c963590e16.png)
 
 ## 상세페이지
+![Screen Shot 2022-08-11 at 10 25 14 AM](https://user-images.githubusercontent.com/26310384/184049529-6557d703-1bd6-42e8-b229-8185d5a40e68.png)
+![Screen Shot 2022-08-11 at 10 25 36 AM](https://user-images.githubusercontent.com/26310384/184049587-927a5723-513d-4f2f-9488-1c42fedc8410.png)
+![Screen Shot 2022-08-11 at 10 23 26 AM](https://user-images.githubusercontent.com/26310384/184049416-01145426-1086-41e6-8e2c-b66d88462423.png)
+![Screen Shot 2022-08-11 at 10 26 16 AM](https://user-images.githubusercontent.com/26310384/184049614-fa75886d-0b95-4679-a443-527c369ace9d.png)
+![Screen Shot 2022-08-11 at 10 26 41 AM](https://user-images.githubusercontent.com/26310384/184049648-04f34bef-b29b-4791-ae78-f79b39e03e12.png)
+![Screen Shot 2022-08-11 at 10 26 55 AM](https://user-images.githubusercontent.com/26310384/184049668-6c507360-c957-41fa-b7d5-c2fb8744ab7d.png)
 
 ## 폴더 구성
+![Screen Shot 2022-08-11 at 10 24 46 AM](https://user-images.githubusercontent.com/26310384/184049508-5d352716-0051-40e4-b03f-8354a05073f8.png)
 
 ## 컴포넌트 구성
-
-```javascript
-
-```
+![Screen Shot 2022-08-11 at 10 27 49 AM](https://user-images.githubusercontent.com/26310384/184049735-a9174e73-6376-4c6c-90c6-d34a446150ea.png)
