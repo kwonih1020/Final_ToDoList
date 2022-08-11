@@ -26,7 +26,10 @@ export const __patchComment = createAsyncThunk(
         { desc: newDesc }
       );
 
-      return thunkAPI.fulfillWithValue(patchCommentRes.data);
+      return thunkAPI.fulfillWithValue(patchCommentRes.data); //[] <-- Iterrable!
+      //patchCommentRes만 넘기면 에러발생. 객체형식{} 데이터가 넘어가서. <== Iterrable이 아니다!
+      //promise에서 promise result object는 iterrable임! 근데 객체형식{} 데이터는 itterable아니기 때문에 문제는 없으나 에러발생!
+      //[], Html Collection, String,...itterable => index를 가지고 각각의 데이터에 순회가능한 형식의 데이터집합?
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
