@@ -11,8 +11,6 @@ const Button = (props) => {
   );
 };
 
-export default Button;
-
 const StButton = styled.button`
   display: flex;
   align-items: center;
@@ -46,3 +44,5 @@ const StButton = styled.button`
     }
   }}
 `;
+
+export default Button;

@@ -17,7 +17,7 @@ export const __getInitialComments = createAsyncThunk(
     try {
       const targetId = payload;
       const commentList = await axios.get(
-        commentServer + `?origin_id=${targetId}&_end=8`
+        commentServer + `?todoId=${targetId}&_end=8`
       );
       return thunkAPI.fulfillWithValue(commentList.data);
     } catch (error) {
@@ -34,7 +34,7 @@ export const __getComments = createAsyncThunk(
       const getStartIdx = payload.getStartIdx;
       const targetId = payload.targetId;
       const commentList = await axios.get(
-        commentServer + `?origin_id=${targetId}&_start=${getStartIdx}&_limit=6`
+        commentServer + `?todoId=${targetId}&_start=${getStartIdx}&_limit=6`
       );
 
       return thunkAPI.fulfillWithValue(legacyComments.concat(commentList.data));

@@ -18,8 +18,6 @@ const Header = (props) => {
   );
 };
 
-export default Header;
-
 const Wrap = styled.div`
   width: 100%;
   height: 45px;
@@ -29,8 +27,11 @@ const Wrap = styled.div`
   box-sizing: border-box;
   align-items: center;
   border-bottom: 1px solid #ddd;
+
   p {
     font-size: 20px;
     font-weight: 600;
   }
 `;
+
+export default Header;
