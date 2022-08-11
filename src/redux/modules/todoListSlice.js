@@ -7,6 +7,7 @@ const initialState = {
   todos: [],
   isLoading: false,
   error: null,
+  status: 0,
 };
 
 export const __getTodoList = createAsyncThunk(
@@ -25,9 +26,9 @@ export const __deleteTodo = createAsyncThunk(
   "__deleteTodo",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.delete(todoServer + `/${payload}`);
-      // console.log("data", data.data);
-      thunkAPI.fulfillWithValue(data.data);
+      await axios.delete(todoServer + `/${payload}`);
+      const deletedRes = await axios.get(todoServer);
+      return thunkAPI.fulfillWithValue(deletedRes.data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -58,6 +59,7 @@ const todoListSlice = createSlice({
     },
     [__deleteTodo.fulfilled]: (state, action) => {
       state.isLoading = false;
+      state.todos = action.payload;
     },
     [__deleteTodo.rejected]: (state, action) => {
       state.isLoading = false;

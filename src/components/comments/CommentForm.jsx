@@ -33,10 +33,7 @@ const CommentForm = () => {
         ...inputs,
       })
     );
-    setInputs({
-      user: "",
-      desc: "",
-    });
+    setInputs({ ...inputs, user: "", desc: "" });
   };
 
   return (
