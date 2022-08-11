@@ -17,19 +17,3 @@ server.use(router);
 server.listen(port, () => {
   console.log("JSON Server is running");
 });
-
-const mongoose = require("mongoose");
-
-mongoose.connect(
-  "mongodb+srv://rad572985:xofbsdlajsl1!@cluster0.zzh6w.mongodb.net/?retryWrites=true&w=majority"
-);
-
-const db = mongoose.connection;
-
-db.on("error", () => {
-  console.log("db connection Failed");
-});
-
-db.once("open", () => {
-  console.log("db,Connected!");
-});
