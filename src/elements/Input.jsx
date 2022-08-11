@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Input = (props) => {
   return (
-    <StInput {...props} required={true} minLength={3} value={props.initValue} />
+    <StInput {...props} required={true} minLength={3} value={props.value} />
   );
 };
 

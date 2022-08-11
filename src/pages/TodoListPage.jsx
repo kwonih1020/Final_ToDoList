@@ -8,12 +8,11 @@ import { useEffect } from "react";
 
 const TodoListPage = () => {
   const todos = useSelector((state) => state.todoListSlice.todos);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(__getTodoList());
-  }, [dispatch]);
+  }, []);
 
   return (
     <GlobalLayout>

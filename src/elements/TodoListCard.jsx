@@ -17,7 +17,6 @@ const TodoListCard = ({ todo }) => {
     if (result === true) {
       dispatch(__deleteTodo(todo.id));
       dispatch(__deleteCommentsById(todo.id));
-      dispatch(__getTodoList());
     }
   };
 
