@@ -1,9 +1,8 @@
+// eslint-disable-next-line
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-// import Input from "../elements/Input";
-// import TextArea from "../elements/TextArea";
-// import Button from "../elements/Button";
 import { __postTodo } from "../../redux/modules/todoSlice";
 import { useDispatch } from "react-redux";
 import Button from "../../elements/Button";
@@ -90,4 +89,4 @@ const Textarea = styled.textarea`
   border: 1px solid rgb(238, 238, 238);
   padding: 12px;
   font-size: 14px;
-`
+`;

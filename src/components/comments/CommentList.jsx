@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";

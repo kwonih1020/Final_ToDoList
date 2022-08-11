@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 
-import React, { useCallback, useState, useRef } from "react";
+import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux/es/exports";
 import styled from "styled-components";
 import { __deleteComment, __patchComment } from "../redux/modules/commentSlice";

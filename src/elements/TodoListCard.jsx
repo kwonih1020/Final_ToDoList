@@ -1,7 +1,9 @@
+// eslint-disable-next-line
+
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { __deleteTodo, __getTodoList } from "../redux/modules/todoListSlice";
+import { __deleteTodo } from "../redux/modules/todoListSlice";
 import { useDispatch } from "react-redux/es/exports";
 import { __deleteCommentsById } from "../redux/modules/commentListSlice";
 import Button from "./Button";
