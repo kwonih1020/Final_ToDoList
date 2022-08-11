@@ -12,7 +12,7 @@
 
 - 항해99 8기 A반 2조 팀 프로젝트
   - 권익현, 강태훈, 심채운, 강도욱
-- React, Redux/Toolkit 과 middleware Thunk를 활용하여 ToDoList앱을 만들었습니다.
+- React, Redux/Toolkit 과 Middleware Thunk를 활용하여 ToDoList앱을 만들었습니다.
 - 2022.08.05 ~ 2022.08.11
 
 ## 주요기능
