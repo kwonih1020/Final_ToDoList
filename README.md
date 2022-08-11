@@ -38,6 +38,9 @@
 - Router
 - axios
 - json-server
+- react-icons
+- Heroku
+- Vercel
 
 ## 환경설정
 
@@ -51,7 +54,7 @@
 - yarn add axios
 - yarn add redux-logger
 - yarn add redux-devtools-extension
-- yaen add react-icons
+- yarn add react-icons
 - yarn start
 ```
 
