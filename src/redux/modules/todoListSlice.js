@@ -16,8 +16,8 @@ export const __getTodoList = createAsyncThunk(
     try {
       const data = await axios.get(todoServer);
       return thunkAPI.fulfillWithValue(data.data);
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -29,8 +29,8 @@ export const __deleteTodo = createAsyncThunk(
       await axios.delete(todoServer + `/${payload}`);
       const deletedRes = await axios.get(todoServer);
       return thunkAPI.fulfillWithValue(deletedRes.data);
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
