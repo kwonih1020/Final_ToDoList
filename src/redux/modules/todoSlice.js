@@ -22,7 +22,7 @@ export const __getTodo = createAsyncThunk(
       const response = await axios.get(todoServer + `/${args}`);
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -42,7 +42,7 @@ export const __postTodo = createAsyncThunk(
 
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -58,8 +58,8 @@ export const __patchTodo = createAsyncThunk(
       const data = await axios.patch(todoServer + `/${targetId}`, newBody);
       // console.log(newBody);
       return thunkApi.fulfillWithValue(data.data);
-    } catch (e) {
-      return thunkApi.rejectWithValue(e);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

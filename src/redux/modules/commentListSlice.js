@@ -21,7 +21,7 @@ export const __getInitialComments = createAsyncThunk(
       );
       return thunkAPI.fulfillWithValue(commentList.data);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.status);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -39,7 +39,7 @@ export const __getComments = createAsyncThunk(
 
       return thunkAPI.fulfillWithValue(legacyComments.concat(commentList.data));
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.status);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -52,37 +52,14 @@ export const __postComments = createAsyncThunk(
       const { user, desc, targetId } = { ...payload };
       // console.log(payload);
       const commentPost = await axios.post(commentServer, {
-        origin_id: targetId,
+        todosId: targetId,
         id: commentList.data.at(-1)?.id + 1,
         user,
         desc,
       });
       return thunkAPI.fulfillWithValue(commentPost.data);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
-
-export const __deleteCommentsById = createAsyncThunk(
-  "comments/__deleteCommentById",
-  async (payload, thunkAPI) => {
-    try {
-      const getByIdRes = await axios.get(
-        commentServer + `?origin_id=${payload}`
-      );
-      for (let i = 0; i < getByIdRes.data.length; i++) {
-        if (i === getByIdRes.data.length - 1) {
-          const deleteAllCommentRes = await axios.delete(
-            commentServer + `/${getByIdRes.data[i].id}`
-          );
-          return thunkAPI.fulfillWithValue(deleteAllCommentRes.data);
-        } else {
-          axios.delete(commentServer + `/${getByIdRes.data[i].id}`);
-        }
-      }
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -131,17 +108,17 @@ const commentListSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    [__deleteCommentsById.pending]: (state, action) => {
-      state.isLoading = true;
-    },
-    [__deleteCommentsById.fulfilled]: (state, action) => {
-      state.isLoading = false;
-    },
-    [__deleteCommentsById.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.comments = [];
-      state.err = action.payload;
-    },
+    // [__deleteCommentsById.pending]: (state, action) => {
+    //   state.isLoading = true;
+    // },
+    // [__deleteCommentsById.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    // },
+    // [__deleteCommentsById.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.comments = [];
+    //   state.err = action.payload;
+    // },
   },
 });
 

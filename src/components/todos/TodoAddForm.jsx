@@ -28,7 +28,8 @@ function TodoAddForm() {
         dispatch(__postTodo(inputs));
         navigate("/");
         setInputs({ user: "", title: "", body: "" });
-      }}>
+      }}
+    >
       <label htmlFor="user">작성자</label>
       <Input
         size="wide"
@@ -51,8 +52,7 @@ function TodoAddForm() {
       />
       <label htmlFor="body">내용</label>
       <Textarea
-        size="wide"
-        rows="20"
+        rows="19"
         name="body"
         placeholder="내용을 입력해주세요.(200자 이내)"
         maxlength="200"

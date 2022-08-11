@@ -28,7 +28,7 @@ export const __patchComment = createAsyncThunk(
 
       return thunkAPI.fulfillWithValue(patchCommentRes.data);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -39,7 +39,7 @@ export const __getComment = createAsyncThunk(
       const getCommentRes = await axios.get(commentServer + `/${args}`);
       return thunkAPI.fulfillWithValue(getCommentRes.data);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -51,7 +51,7 @@ export const __deleteComment = createAsyncThunk(
       const delCommentRes = await axios.delete(commentServer + `/${args}`);
       return thunkAPI.fulfillWithValue(delCommentRes.status);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
